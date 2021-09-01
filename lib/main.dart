@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:pokemon_guides_app/Theme/LightNeumorphicThemeData.dart';
+import 'package:pokemon_guides_app/Theme/darkNeumorphicThemeData.dart';
+import 'package:pokemon_guides_app/Theme/lightNeumorphicThemeData.dart';
+import 'package:pokemon_guides_app/Theme/neumorphicStyles.dart';
+
+import 'Components/Common/GlobalSearchBar.dart';
 
 
 void main() => runApp(MyApp());
@@ -13,12 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       themeMode: ThemeMode.light,
-      theme: NeumorphicThemeData(
-        baseColor: Color(0xFFDDDDDD),
-        lightSource: LightSource.topLeft,
-        depth: 10,
-      ),
-      darkTheme: DarkNeumorphicThemeData,
+      theme: lightNeumorphicThemeData,
+      darkTheme: darkNeumorphicThemeData,
       home: MyHomePage(),
     );
   }
@@ -31,131 +31,79 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: NeumorphicFloatingActionButton(
         child: Icon(Icons.add, size: 30),
-        onPressed: () {},
+        onPressed: () {
+          _changeTheme(context);
+        },
       ),
       backgroundColor: NeumorphicTheme.baseColor(context),
-      body: ListView(
-        children: <Widget>[
-        Column(
-        mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        //Title(color: color, child: child)
-        TitleText(context),
-        profileCard(context),
-        SearchBar(context),
-        NeumorphicButton(
-          onPressed: () {
-            print("onClick");
-          },
-          style: NeumorphicStyle(
-            shape: NeumorphicShape.flat,
-            boxShape: NeumorphicBoxShape.circle(),
-          ),
-          padding: const EdgeInsets.all(12.0),
-          child: Icon(
-            Icons.favorite_border,
-            color: _iconsColor(context),
-          ),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            SizedBox(height: 100),
+
+            TitleText(context),
+
+            SizedBox(height: 100),
+
+            GlobalSearchBar(),
+
+            SizedBox(height: 20),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Wrap(
+                alignment: WrapAlignment.spaceEvenly,
+                runSpacing: 20,spacing: 20,
+                children: [
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name"),
+                  _pageCard("imagePath", "name")
+                ],
+              ),
+            )
+          ]
         ),
-        NeumorphicButton(
-            margin: EdgeInsets.only(top: 12),
-            onPressed: () {
-              NeumorphicTheme.of(context).themeMode =
-              NeumorphicTheme.isUsingDark(context)
-                  ? ThemeMode.light
-                  : ThemeMode.dark;
-            },
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.flat,
-              boxShape:
-              NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
-            ),
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
-              "Toggle Theme",
-              style: TextStyle(color: _textColor(context)),
-            )),
-        NeumorphicButton(
-            margin: EdgeInsets.only(top: 12),
-            onPressed: () {
-
-            },
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.flat,
-              boxShape:
-              NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
-              //border: NeumorphicBorder()
-            ),
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
-              "Go to full sample",
-              style: TextStyle(color: _textColor(context)),
-            )),
-         ],
-         )
-        ]
-
-
       ),
     );
   }
 
-  Color _iconsColor(BuildContext context) {
-    final theme = NeumorphicTheme.of(context);
-    if (theme.isUsingDark) {
-      return theme.current.accentColor;
-    } else {
-      return null;
-    }
+  void _changeTheme(BuildContext context){
+    NeumorphicTheme.of(context).themeMode =
+    NeumorphicTheme.isUsingDark(context)
+        ? ThemeMode.light
+        : ThemeMode.dark;
   }
 
-  Color _textColor(BuildContext context) {
-    if (NeumorphicTheme.isUsingDark(context)) {
-      return Colors.white;
-    } else {
-      return Colors.black;
-    }
-  }
+
 
   Widget TitleText(BuildContext context){
-    return Text(
-      "Pokemon Life", style: TextStyle(
-      fontSize: 30
-    ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      alignment: Alignment.center,
+      child: Text(
+        "Pokemon Guide", style: TextStyle(
+        fontSize: 30, fontWeight: FontWeight.bold,color:Colors.teal
+      ),
+      ),
     );
   }
 
-  Widget SearchBar(BuildContext context){
-    return Neumorphic(
+  Widget _pageCard(String imagePath, String name){
+    return NeumorphicButton(
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.flat
+      ),
       child: Container(
-        width: MediaQuery.of(context).size.width*0.9,
-        alignment: Alignment.center,
-        child: Container(
-          //width: MediaQuery.of(context).size.width*0.8,
-          child: TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search,),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8))
-              ),
-              labelText: 'Global Search...'
-            ),
-          ),
-        ),
-      )
+        width: 120, height: 80,
+      ),
+      onPressed: (){
+
+      },
     );
   }
 
-  Widget profileCard(BuildContext context) {
-    return Neumorphic(
-        style: NeumorphicStyle(
-          border: NeumorphicBorder(color: Colors.white,width: 0.3),
-          depth: 10,
-          shape: NeumorphicShape.flat,
-          ),
-      child: Container(
-        width: 100, height: 100,
-      )
-    );
-  }
 }
