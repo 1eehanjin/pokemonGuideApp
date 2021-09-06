@@ -1,9 +1,7 @@
 import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:pokemon_guides_app/Theme/darkNeumorphicThemeData.dart';
-import 'package:pokemon_guides_app/Theme/lightNeumorphicThemeData.dart';
-import 'package:pokemon_guides_app/Theme/neumorphicStyles.dart';
+import 'package:get/get.dart';
+import 'package:pokemon_guides_app/Pages/PokemonListView.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -16,29 +14,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return NeumorphicApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      themeMode: ThemeMode.light,
-      theme: lightNeumorphicThemeData,
-      darkTheme: darkNeumorphicThemeData,
+    return GetMaterialApp(
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return Scaffold(
-
-      floatingActionButton: NeumorphicFloatingActionButton(
-        child: Icon(Icons.add, size: 30),
-        onPressed: () {
-          _changeTheme(context);
-        },
-      ),
       backgroundColor: Colors.blue[100],
       body: SafeArea(
         bottom: false,
@@ -53,7 +40,7 @@ class MyHomePage extends StatelessWidget {
                       Colors.lightBlue,
                       Colors.white54,
                       Colors.white30,
-                      Color(0xFFE8EBF2)
+                      Colors.white
                     ],
                     durations: [35000, 19440, 10800, 6000],
                     heightPercentages: [0.07, 0.1, 0.12, 0.15],
@@ -85,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: Wrap(
                           alignment: WrapAlignment.spaceEvenly,
-                          runSpacing: 30,spacing: 30,
+                          runSpacing: 10,spacing: 10,
                           children: [
                             _pageCard("imagePath", "name"),
                             _pageCard("imagePath", "name"),
@@ -109,12 +96,6 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void _changeTheme(BuildContext context){
-    NeumorphicTheme.of(context).themeMode =
-    NeumorphicTheme.isUsingDark(context)
-        ? ThemeMode.light
-        : ThemeMode.dark;
-  }
 
 
 
@@ -132,13 +113,20 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget _pageCard(String imagePath, String name){
-        return NeumorphicButton(
+        return MaterialButton(
           padding: EdgeInsets.all(10),
-          style: NeumorphicStyle(
-            color: Colors.white,
-            shape: NeumorphicShape.flat
-          ),
           child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x447090B0),
+                  offset: Offset(0, 16),
+                  blurRadius: 16
+                )
+              ]
+            ),
             width: 140,height: 150,
             child: Stack(
               alignment: Alignment.bottomCenter,
@@ -146,38 +134,31 @@ class MyHomePage extends StatelessWidget {
                 Positioned(
                   top: 4,
                   child: Container(
-                    height: 100,width: 140,
-                      child: DropShadowImage(
-                        scale: 0.8,
-                          image: Image.asset("assets/pika.png"))
+                    height: 100,width: 100,
+                      //child: Image.asset("assets/pika.png")
                   ),
                 ),
                  Positioned(
-                   bottom:4,
-                     child: Text("포켓몬", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Color(0xFF666666), fontFamily: "NotoSans"),))
+                   bottom:10,
+                     child: Text("포", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Color(0xFF666666), fontFamily: "NotoSans"),))
               ],
             )
           ),
           onPressed: (){
+            Get.to(PokemonListView());
           },
     );
   }
 
   Widget _mainCard(){
-    return NeumorphicButton(
+    return MaterialButton(
+
+      color:Colors.white,
       padding: EdgeInsets.all(30),
-      style: NeumorphicStyle(
-          shape: NeumorphicShape.flat,
-          color: Colors.white,
-          shadowLightColor: Colors.white70
-      ),
       child: Container(
         width: 300,height: 40,
-
       ),
-      margin: EdgeInsets.all(0),
       onPressed: (){
-
       },
     );
   }
