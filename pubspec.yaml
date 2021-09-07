@@ -31,7 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   wave: ^0.2.0
   drop_shadow_image: ^0.9.1
-
+  flutter_staggered_grid_view:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,6 +68,22 @@ flutter:
        fonts:
          - asset: fonts/NotoSansKR-Regular.otf
          - asset: fonts/NotoSansKR-Bold.otf
+     - family: NotoSansCJKkr
+       fonts:
+         - asset: fonts/NotoSansCJKkr-Thin.otf
+           weight: 100
+         - asset: fonts/NotoSansCJKkr-Light.otf
+           weight: 300
+         - asset: fonts/NotoSansCJKkr-Regular.otf
+           weight: 400
+         - asset: fonts/NotoSansCJKkr-Medium.otf
+           weight: 500
+         - asset: fonts/NotoSansCJKkr-Bold.otf
+           weight: 700
+         - asset: fonts/NotoSansCJKkr-Black.otf
+           weight: 900
+
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
