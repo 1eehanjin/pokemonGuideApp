@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Theme/color.dart';
 
 class GlobalSearchBar extends StatefulWidget {
   const GlobalSearchBar({Key? key}) : super(key: key);
@@ -12,11 +13,10 @@ class _GlobalSearchBarState extends State<GlobalSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white70,
+      color: backgroundColorDark,
       alignment: Alignment.center,
       child: Padding(
         padding: EdgeInsets.only(left: 15, right: 15),
-        //width: MediaQuery.of(context).size.width*0.8,
         child: TextField(
           decoration: InputDecoration(
               floatingLabelBehavior: FloatingLabelBehavior.never,
