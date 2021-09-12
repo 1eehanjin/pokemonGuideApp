@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/sizes.dart';
+import 'package:pokemon_guides_app/Theme/textStyles.dart';
 
 Widget TitleText(BuildContext context){
   return Container(
@@ -6,10 +9,7 @@ Widget TitleText(BuildContext context){
 
     alignment: Alignment.centerLeft,
     child: Text(
-      "이한진님,\n안녕하세요.", style: TextStyle(
-        fontFamily: "NotoSansCJKkr",
-        fontSize: 36, fontWeight: FontWeight.w700,color:Color(0xFF191919)
-    ),
+      "트레이너님,\n반갑습니다!", style: getBoldKrFont(fontColorBlack, fontSize56)
     ),
   );
 }
