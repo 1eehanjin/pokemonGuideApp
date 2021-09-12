@@ -10,5 +10,11 @@ double fontSize32 = 16;
 double fontSize28 = 14;
 double fontSize24 = 12;
 
-double marginSizeBlock = 40;
+
 double marginSizeSide = 24;
+double marginSizeBlock = 40;
+double marginSizeColorBlock = 35;
+
+double marginSizeXS = 6;
+double marginSizeS = 12;
+double marginSizeM = 16;

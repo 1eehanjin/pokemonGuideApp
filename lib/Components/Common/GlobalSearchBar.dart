@@ -13,7 +13,11 @@ class _GlobalSearchBarState extends State<GlobalSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColorDark,
+      decoration: BoxDecoration(
+        color: backgroundColorDark,
+        borderRadius: BorderRadius.circular(10)
+      ),
+      
       alignment: Alignment.center,
       child: Padding(
         padding: EdgeInsets.only(left: 15, right: 15),
