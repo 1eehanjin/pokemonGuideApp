@@ -60,7 +60,7 @@ class TrainerCard extends StatelessWidget {
                   right: 16,top: -32,
                   child: Container(
                     height: 200,width: 200,
-                    child:Image.asset("assets/pokeball.png",color: Colors.white,),
+                    child:Image.asset("assets/images/pokeball.png",color: Colors.white,),
 
                   ),
                 ),
@@ -69,7 +69,7 @@ class TrainerCard extends StatelessWidget {
                   right: 30,top: 30,
                   child: Container(
                       height: 150,width: 150,
-                      child:Image.asset("assets/pika.png")
+                      child:Image.asset("assets/images/pika.png")
                   ),
                 ),
 

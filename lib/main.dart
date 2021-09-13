@@ -183,7 +183,7 @@ class MyHomePage extends StatelessWidget {
 
           Container(
             width: 60,height: 60,
-              child: Image.asset("assets/pika.png"),
+              child: Image.asset("assets/images/pika.png"),
             alignment: Alignment.center,
           ),
           SizedBox(height: marginSizeXS,),
