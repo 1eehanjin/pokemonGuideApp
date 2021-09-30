@@ -2,6 +2,9 @@ import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokemon_guides_app/Components/MyAppBar/AppTitleText.dart';
+import 'package:pokemon_guides_app/Datas/Data.dart';
+import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
+import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
 import 'package:pokemon_guides_app/Pages/PokemonListView.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -15,7 +18,11 @@ import 'Components/Common/TrainerCard.dart';
 import 'Components/MyHomePage/TitleText.dart';
 
 
-void main() => runApp(MyApp());
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  Data.initData();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

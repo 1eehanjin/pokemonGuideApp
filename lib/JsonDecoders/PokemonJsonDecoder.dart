@@ -1,24 +1,25 @@
 import 'dart:convert';
-import 'package:pokemon_guides_app/Core/network.dart';
+import 'package:flutter/services.dart';
+import 'package:pokemon_guides_app/Datas/Data.dart';
 
 import 'JsonPokemonModel.dart';
 
 
-class GithubDataSource {
-  static const String url =
-      'https://raw.githubusercontent.com/1eehanjin/1eehanjin.github.io/main/_posts/pokemons.json';
+class DataSource {
 
-  GithubDataSource(this.networkManager);
+  DataSource();
 
-  final NetworkManager networkManager;
 
-  Future<List<GithubPokemonModel>> getPokemons() async {
-    final response = await networkManager.request(RequestMethod.get, url);
-
-    final data = (json.decode(response.data) as List)
-        .map((item) => GithubPokemonModel.fromJson(item))
+  Future<List<PokemonModel>> getPokemons() async {
+    final String jsonString = await rootBundle.loadString('assets/datas/pokemons.json');
+    print(jsonString);
+    final jsonResponse = json.decode(jsonString);
+    final data = (jsonResponse as List)
+        .map((item) => PokemonModel.fromJson(item))
         .toList();
-
+    print(data);
     return data;
   }
+
+
 }

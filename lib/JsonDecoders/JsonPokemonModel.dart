@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
-class GithubPokemonModel {
-  GithubPokemonModel(
+class PokemonModel {
+  PokemonModel(
       this.name,
       this.id,
       this.imageUrl,
@@ -32,10 +32,10 @@ class GithubPokemonModel {
       this.baseExp,
       );
 
-  factory GithubPokemonModel.fromJson(Map<String, dynamic> json) =>
-      _$GithubPokemonModelFromJson(json);
+  factory PokemonModel.fromJson(Map<String, dynamic> json) =>
+      _$PokemonModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GithubPokemonModelToJson(this);
+  Map<String, dynamic> toJson() => _$PokemonModelToJson(this);
 
   @JsonKey(disallowNullValue: true)
   final String name;
@@ -62,16 +62,16 @@ class GithubPokemonModel {
   final String weight;
 
   @JsonKey(name: 'typeofpokemon', disallowNullValue: true)
-  final List<String> types;
+  final List<String>? types;
 
   @JsonKey(defaultValue: [])
-  final List<String> weaknesses;
+  final List<String>? weaknesses;
 
   @JsonKey(defaultValue: [])
-  final List<String> evolutions;
+  final List<String>? evolutions;
 
   @JsonKey(defaultValue: [])
-  final List<String> abilities;
+  final List<String>? abilities;
 
   @JsonKey(disallowNullValue: true)
   final num hp;
@@ -123,7 +123,7 @@ class GithubPokemonModel {
 // JsonSerializableGenerator
 // **************************************************************************
 
-GithubPokemonModel _$GithubPokemonModelFromJson(Map<String, dynamic> json) {
+PokemonModel _$PokemonModelFromJson(Map<String, dynamic> json) {
   $checkKeys(json, disallowNullValues: const [
     'name',
     'id',
@@ -141,19 +141,19 @@ GithubPokemonModel _$GithubPokemonModelFromJson(Map<String, dynamic> json) {
     'genderless',
     'egg_groups'
   ]);
-  return GithubPokemonModel(
+  return PokemonModel(
     json['name'] as String,
     json['id'] as String,
     json['imageurl'] as String,
-    json['xdescription'] as String ?? '',
-    json['ydescription'] as String ?? '',
-    json['height'] as String ?? '',
-    json['category'] as String ?? '',
-    json['weight'] as String ?? '',
-    (json['typeofpokemon'] as List)?.map((e) => e as String)?.toList() ?? [],
-    (json['weaknesses'] as List)?.map((e) => e as String)?.toList() ?? [],
-    (json['evolutions'] as List)?.map((e) => e as String)?.toList() ?? [],
-    (json['abilities'] as List)?.map((e) => e as String)?.toList() ?? [],
+    (json['xdescription'] ?? '') as String,
+    (json['ydescription'] ?? '') as String,
+    (json['height']?? '') as String,
+    (json['category'] ?? '') as String,
+    (json['weight'] ?? '') as String,
+    (json['typeofpokemon'] as List).map((e) => e as String).toList(),
+    (json['weaknesses'] as List).map((e) => e as String).toList(),
+    (json['evolutions'] as List).map((e) => e as String).toList(),
+    (json['abilities'] as List).map((e) => e as String).toList(),
     json['hp'] as num,
     json['attack'] as num,
     json['defense'] as num,
@@ -161,18 +161,18 @@ GithubPokemonModel _$GithubPokemonModelFromJson(Map<String, dynamic> json) {
     json['special_defense'] as num,
     json['speed'] as num,
     json['total'] as num,
-    json['male_percentage'] as String,
-    json['female_percentage'] as String,
+    (json['male_percentage'] ?? '') as String,
+    (json['female_percentage'] ?? '') as String,
     json['genderless'] as num,
-    json['cycles'] as String ?? '',
+    (json['cycles'] ?? '') as String,
     json['egg_groups'] as String,
     json['evolvedfrom'] as String,
-    json['reason'] as String ?? '',
-    json['base_exp'] as String ?? '0',
+    (json['reason'] ?? '') as String,
+    (json['base_exp'] ?? '0') as String,
   );
 }
 
-Map<String, dynamic> _$GithubPokemonModelToJson(GithubPokemonModel instance) {
+Map<String, dynamic> _$PokemonModelToJson(PokemonModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
