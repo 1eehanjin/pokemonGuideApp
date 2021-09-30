@@ -23,6 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: MyHomePage(),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          centerTitle: false,
+          backgroundColor: backgroundColorLight,
+            titleTextStyle: getBoldKrFont(fontColorBlack, 20),
+          elevation: 0,
+            iconTheme: IconThemeData(color: fontColorBlack),
+
+      ),
+        backgroundColor: backgroundColorLight,
+        primaryColor: brandColor
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -34,11 +46,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(),
-      backgroundColor: backgroundColorWhite,
+      backgroundColor: backgroundColorLight,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: fontColorBlack),
-        backgroundColor: backgroundColorWhite,
-        centerTitle: false,
+        backgroundColor: backgroundColorLight,
         title: AppTitleText(context),
         elevation: 0,
       ),
@@ -176,13 +186,26 @@ class MyHomePage extends StatelessWidget {
   Widget GuideElementButton(String title){
     return MaterialButton(
       onPressed: (){
-        print("1");
+        Get.to(PokemonListView());
       },
       child: Column(
         children: [
 
           Container(
-            width: 60,height: 60,
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: Color(0x180F2447),
+                      offset: Offset(20, 30),
+                      blurRadius: 70
+                  )
+                ]
+                ,
+                borderRadius: BorderRadius.circular(15),
+                color: backgroundColorWhite
+            ),
+            width: 80,height: 80,
+              padding: EdgeInsets.all(10),
               child: Image.asset("assets/images/pika.png"),
             alignment: Alignment.center,
           ),

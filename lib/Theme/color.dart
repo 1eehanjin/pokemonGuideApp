@@ -45,10 +45,10 @@ Color errorColor = Color(0xFFFF3120);
 Color brandColor = Colors.blueAccent;
 
 Color backgroundColorDark = Color(0xFFF1F1F5);
-Color backgroundColorLight = Color(0xFFF8F8FA);
+Color backgroundColorLight = Color(0xFFF8FAFB);
 Color backgroundColorWhite = Color(0xFFFFFFFF);
 
 Color lineColorBlack = Color(0xFF191919);
 Color lineColorGrey = Color(0xFFDBDBDB);
-Color lineColorLightGrey = Color(0xFFEDEDED);
+Color lineColorLightGrey = Color(0xFFF4F6F8);
 
