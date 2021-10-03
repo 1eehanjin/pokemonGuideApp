@@ -45,61 +45,61 @@ extension PokemonTypesX on PokemonTypes {
   Color get color {
     switch (this) {
       case PokemonTypes.grass:
-        return AppColors.lightGreen;
+        return TypeColors.lightGreen;
 
       case PokemonTypes.bug:
-        return AppColors.lightTeal;
+        return TypeColors.lightTeal;
 
       case PokemonTypes.fire:
-        return AppColors.lightRed;
+        return TypeColors.lightRed;
 
       case PokemonTypes.water:
-        return AppColors.lightBlue;
+        return TypeColors.lightBlue;
 
       case PokemonTypes.fighting:
-        return AppColors.red;
+        return TypeColors.red;
 
       case PokemonTypes.normal:
-        return AppColors.beige;
+        return TypeColors.beige;
 
       case PokemonTypes.electric:
-        return AppColors.lightYellow;
+        return TypeColors.lightYellow;
 
       case PokemonTypes.psychic:
-        return AppColors.lightPink;
+        return TypeColors.lightPink;
 
       case PokemonTypes.poison:
-        return AppColors.lightPurple;
+        return TypeColors.lightPurple;
 
       case PokemonTypes.ghost:
-        return AppColors.purple;
+        return TypeColors.purple;
 
       case PokemonTypes.ground:
-        return AppColors.darkBrown;
+        return TypeColors.darkBrown;
 
       case PokemonTypes.rock:
-        return AppColors.lightBrown;
+        return TypeColors.lightBrown;
 
       case PokemonTypes.dark:
-        return AppColors.black;
+        return TypeColors.black;
 
       case PokemonTypes.dragon:
-        return AppColors.violet;
+        return TypeColors.violet;
 
       case PokemonTypes.fairy:
-        return AppColors.pink;
+        return TypeColors.pink;
 
       case PokemonTypes.flying:
-        return AppColors.lilac;
+        return TypeColors.lilac;
 
       case PokemonTypes.ice:
-        return AppColors.lightCyan;
+        return TypeColors.lightCyan;
 
       case PokemonTypes.steel:
-        return AppColors.grey;
+        return TypeColors.grey;
 
       default:
-        return AppColors.lightBlue;
+        return TypeColors.lightBlue;
     }
   }
 

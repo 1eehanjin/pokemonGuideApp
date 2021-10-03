@@ -16,6 +16,7 @@ import 'package:wave/wave.dart';
 import 'Components/Common/GlobalSearchBar.dart';
 import 'Components/Common/TrainerCard.dart';
 import 'Components/MyHomePage/TitleText.dart';
+import 'Theme/shadows.dart';
 
 
 void main(){
@@ -33,14 +34,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           centerTitle: false,
-          backgroundColor: backgroundColorLight,
-            titleTextStyle: getBoldKrFont(fontColorBlack, 20),
+          backgroundColor: AppColors.backgroundColorLight,
+            foregroundColor: AppColors.fontColorBlack,
           elevation: 0,
-            iconTheme: IconThemeData(color: fontColorBlack),
+            iconTheme: IconThemeData(color: AppColors.fontColorBlack),
 
       ),
-        backgroundColor: backgroundColorLight,
-        primaryColor: brandColor
+        backgroundColor: AppColors.backgroundColorLight,
+        primaryColor: AppColors.brandColor
       ),
       debugShowCheckedModeBanner: false,
     );
@@ -53,9 +54,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(),
-      backgroundColor: backgroundColorLight,
+      backgroundColor: AppColors.backgroundColorLight,
       appBar: AppBar(
-        backgroundColor: backgroundColorLight,
+        backgroundColor: AppColors.backgroundColorLight,
         title: AppTitleText(context),
         elevation: 0,
       ),
@@ -77,7 +78,7 @@ class MyHomePage extends StatelessWidget {
                         SizedBox(height: marginSizeBlock),
                         GlobalSearchBar(),
                         SizedBox(height: marginSizeBlock),
-                        Text("가이드", style: getBoldKrFont(fontColorBlack, fontSize48),),
+                        Text("가이드", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
                         SizedBox(height: marginSizeM,),
                         Container(
                           width: double.infinity,
@@ -97,7 +98,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: marginSizeBlock),
-                        Text("포켓몬 뉴스", style: getBoldKrFont(fontColorBlack, fontSize48),),
+                        Text("포켓몬 뉴스", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
                         SizedBox(height: marginSizeM),
                         Container(
                           width: double.infinity,
@@ -106,13 +107,13 @@ class MyHomePage extends StatelessWidget {
                               Container(
                                 width: 80,
                                 height: 80,
-                                color: lineColorGrey,
+                                color: AppColors.backgroundColorGrey,
                               ),
                               Expanded(
                                   child: Container(
 
                                     height: 80,
-                                    color: backgroundColorLight,
+                                    color: AppColors.backgroundColorLight,
                                   ),)
                             ],
                           ),
@@ -125,13 +126,13 @@ class MyHomePage extends StatelessWidget {
                               Container(
                                 width: 80,
                                 height: 80,
-                                color: lineColorGrey,
+                                color: AppColors.backgroundColorGrey,
                               ),
                               Expanded(
                                 child: Container(
 
                                   height: 80,
-                                  color: backgroundColorLight,
+                                  color: AppColors.backgroundColorLight,
                                 ),)
                             ],
                           ),
@@ -144,13 +145,13 @@ class MyHomePage extends StatelessWidget {
                               Container(
                                 width: 80,
                                 height: 80,
-                                color: lineColorGrey,
+                                color: AppColors.backgroundColorGrey,
                               ),
                               Expanded(
                                 child: Container(
 
                                   height: 80,
-                                  color: backgroundColorLight,
+                                  color: AppColors.backgroundColorLight,
                                 ),)
                             ],
                           ),
@@ -162,16 +163,16 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Container(
                     width: double.infinity,
-                    color: backgroundColorLight,
+                    color: AppColors.backgroundColorLight,
                     padding: EdgeInsets.only(left: marginSizeSide,right: marginSizeSide,top: marginSizeColorBlock),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("커뮤니티", style: getBoldKrFont(fontColorBlack, fontSize48),),
+                        Text("커뮤니티", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
                         SizedBox(height: marginSizeM,),
                         Container(
                           decoration: BoxDecoration(
-                            color: backgroundColorWhite, borderRadius: BorderRadius.circular(10)
+                            color: AppColors.backgroundColorWhite, borderRadius: BorderRadius.circular(10)
                           ),
                           height: 300,
                         ),
@@ -201,15 +202,11 @@ class MyHomePage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 boxShadow: [
-                  BoxShadow(
-                      color: Color(0x180F2447),
-                      offset: Offset(20, 30),
-                      blurRadius: 70
-                  )
+                  Shadows.whiteBackgroundShadow
                 ]
                 ,
                 borderRadius: BorderRadius.circular(15),
-                color: backgroundColorWhite
+                color: AppColors.backgroundColorWhite
             ),
             width: 80,height: 80,
               padding: EdgeInsets.all(10),
@@ -217,7 +214,7 @@ class MyHomePage extends StatelessWidget {
             alignment: Alignment.center,
           ),
           SizedBox(height: marginSizeXS,),
-          Text(title, style: getRegularKrFont(fontColorGrey, fontSize36),)
+          Text(title, style: getRegularKrFont(AppColors.fontColorGrey, FontSizes.h2),)
         ],
       )
     );

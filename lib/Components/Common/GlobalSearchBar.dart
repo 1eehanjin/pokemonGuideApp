@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/shadows.dart';
 
 class GlobalSearchBar extends StatefulWidget {
   const GlobalSearchBar({Key? key}) : super(key: key);
@@ -14,8 +15,11 @@ class _GlobalSearchBarState extends State<GlobalSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColorDark,
-        borderRadius: BorderRadius.circular(10)
+        color: AppColors.backgroundColorWhite,
+        borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            Shadows.whiteBackgroundShadow
+          ]
       ),
       
       alignment: Alignment.center,

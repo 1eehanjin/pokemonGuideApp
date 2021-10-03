@@ -8,6 +8,7 @@ import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
 import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
 import 'package:pokemon_guides_app/Pages/PokemonDetailView.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/textStyles.dart';
 
@@ -17,7 +18,7 @@ class PokemonListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pokedex",style: getBoldKrFont(fontColorBlack, 20),),
+        title: Text("Pokedex",style: getBoldKrFont(AppColors.fontColorBlack, 20),),
       ),
       body: Column(
         children: [
@@ -42,7 +43,6 @@ class PokemonListView extends StatelessWidget {
       ),
     );
   }
-
   Widget pokemonCard(PokemonModel pokemon){
     return MaterialButton(
       padding: EdgeInsets.all(0),
@@ -51,30 +51,29 @@ class PokemonListView extends StatelessWidget {
           decoration: BoxDecoration(
 
             boxShadow: [
-              BoxShadow(
-                color: Color(0x180F2447),
-                offset: Offset(20, 30),
-                blurRadius: 70
-              )
+              Shadows.whiteBackgroundShadow
             ]
               ,
               borderRadius: BorderRadius.circular(15),
 
 
-              color: backgroundColorWhite
+              color: AppColors.backgroundColorWhite
           ),
           width: 180, height: 140,
           child: Stack(
             children: [
-              Positioned(child: Text(pokemon.id, style: getBoldKrFont(fontColorGrey, 14),), left: 20, top:16,),
+              Positioned(child: Text(pokemon.id, style: getBoldKrFont(AppColors.fontColorGrey, 14),), left: 20, top:16,),
               Positioned(
                   right: 10,bottom: 30,
                   child: Container(
                       height: 100, width: 100,
-                      child: CachedNetworkImage(imageUrl: pokemon.imageUrl)
+                      child: Hero(
+                        tag: pokemon.name,
+                          child: CachedNetworkImage(imageUrl: pokemon.imageUrl)
+                      )
                   )
               ),
-              Positioned(child: Text(pokemon.name, style: getBoldKrFont(fontColorBlack, 16),), left: 20, bottom: 16,),
+              Positioned(child: Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, 16),), left: 20, bottom: 16,),
               Positioned(child: Row(
                   children: [
                     Container(
@@ -96,7 +95,6 @@ class PokemonListView extends StatelessWidget {
       },
     );
   }
-
   Widget TypeIcon(String typeName){
     return Container(
         height: 20, width: 20,

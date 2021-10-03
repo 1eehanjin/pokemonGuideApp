@@ -9,7 +9,7 @@ Widget TitleText(BuildContext context){
 
     alignment: Alignment.centerLeft,
     child: Text(
-      "트레이너님,\n반갑습니다!", style: getBoldKrFont(fontColorBlack, fontSize56)
+      "트레이너님,\n반갑습니다!", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1)
     ),
   );
 }

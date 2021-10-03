@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
 
-class AppColors {
+class TypeColors {
   static const Color beige = Color(0xFFA8A878);
   static const Color black = Color(0xFF303943);
   static const Color blue = Color(0xFF429BED);
@@ -34,21 +34,23 @@ class AppColors {
 }
 
 
+class AppColors{
+  static const Color fontColorBlack = Color(0xFF4d5256); //greyScale 7
+  static const Color fontColorGrey = Color(0xFF878d91); //greyScale 6
+  static const Color fontColorWhite = Color(0xFFF8FAFB); //라이트 그레이는 시인성이 부족하다.
 
-Color fontColorBlack = Color(0xFF191919);
-Color fontColorGrey = Color(0xFF767676);
-Color fontColorLightGrey = Color(0xFF999999); //라이트 그레이는 시인성이 부족하다.
+  static const Color errorColor = Color(0xFFFF3120);
 
+  static const Color brandColor = Colors.blueAccent;
 
-Color errorColor = Color(0xFFFF3120);
+  static const Color backgroundColorLight = Color(0xFFF8FAFB); //greyScale 0
+  static const Color backgroundColorWhite = Color(0xFFFFFFFF); //white Color
+  static const Color backgroundColorBlack = Color(0xFF363A3C); //greyScale 8
+  static const Color backgroundColorGrey = Color(0xFFE1E4E6); //greyScale 5
+  static const Color backgroundColorLightGrey = Color(0xFFEAEEEF); //greyScale 2
 
-Color brandColor = Colors.blueAccent;
+  static const Color shadowColorWhiteBackground = Color(0x180F2447);
 
-Color backgroundColorDark = Color(0xFFF1F1F5);
-Color backgroundColorLight = Color(0xFFF8FAFB);
-Color backgroundColorWhite = Color(0xFFFFFFFF);
+}
 
-Color lineColorBlack = Color(0xFF191919);
-Color lineColorGrey = Color(0xFFDBDBDB);
-Color lineColorLightGrey = Color(0xFFF4F6F8);
 

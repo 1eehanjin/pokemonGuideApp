@@ -31,29 +31,29 @@ class TrainerCard extends StatelessWidget {
                 Positioned(
                     top: 20,left: 20,
                     child: Text("Trainer Card",
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white38, fontSize: fontSize36),)
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white38, fontSize: FontSizes.h3),)
                 ),
 
                 Positioned(
                     top: 60,left: 30,
                     child: Text("Name",
-                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white60, fontSize: fontSize28),)
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white60, fontSize: FontSizes.paragraph),)
                 ),
                 Positioned(
                     top: 80,left: 30,
                     child: Text("Hanjin LEE",
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: fontSize40),)
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: FontSizes.h3),)
                 ),
 
                 Positioned(
                     top: 120,left: 30,
                     child: Text("Friend Code",
-                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white60, fontSize: fontSize28),)
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white60, fontSize: FontSizes.paragraph),)
                 ),
                 Positioned(
                     top: 140,left: 30,
                     child: Text("1234-5678-9101-1121",
-                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white, fontSize: fontSize28),)
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white, fontSize: FontSizes.paragraph),)
                 ),
 
                 Positioned(
@@ -76,7 +76,7 @@ class TrainerCard extends StatelessWidget {
                 Positioned(
                     bottom: 20,left: 80,
                     child: Text("Pokemon Collected: 254 / 524 ",
-                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white70, fontSize: fontSize28),)
+                      style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white70, fontSize: FontSizes.paragraph),)
                 ),
 
               ],
