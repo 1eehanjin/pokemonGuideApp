@@ -87,3 +87,4 @@ class TrainerCard extends StatelessWidget {
     );
   }
 }
+

@@ -396,6 +396,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.2"
+  shadowed_image:
+    dependency: "direct main"
+    description:
+      name: shadowed_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
+  simple_shadow:
+    dependency: "direct main"
+    description:
+      name: simple_shadow
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   sky_engine:
     dependency: transitive
     description: flutter

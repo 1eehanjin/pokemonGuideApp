@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +11,10 @@ import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:shadowed_image/shadowed_image.dart';
+import 'package:simple_shadow/simple_shadow.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 
 class PokemonDetailView extends StatefulWidget {
@@ -23,27 +29,92 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
   Widget build(BuildContext context) {
     pokemon = Get.arguments;
     return Scaffold(
-      backgroundColor: AppColors.backgroundColorLight,
+
       body: DefaultTabController(
         length: 3,
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(pinned: true,
-              shadowColor: Colors.red,
+            SliverAppBar(pinned: true,centerTitle: true,
+              backgroundColor: AppColors.backgroundColorWhite,
               expandedHeight: 400.0,
               flexibleSpace: FlexibleSpaceBar(centerTitle: false,
                 collapseMode: CollapseMode.pin,
                 title: Text(pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2)),
                 background: Hero(
                   tag: pokemon!.name,
-                  child: Container(height: 400,
-                    
+                  child: Container(
+                    width: Get.width, height: 350,
                     child: Stack(
+                      alignment: Alignment.bottomCenter,
                       children: [
-                        Positioned(width: 200,height: 300,
-                          right: 24,bottom: 24,
+                        // Positioned(child:
+                        //     Container(
+                        //       child: WaveWidget(
+                        //         config: CustomConfig(
+                        //           heightPercentages: [0.45, 0.46, 0.48, 0.51],
+                        //           colors: [
+                        //             Colors.transparent,
+                        //             Colors.transparent,
+                        //             Colors.white54,
+                        //             Colors.white,
+                        //           ],
+                        //           durations: [35000, 19440, 10800, 6000],
+                        //
+                        //           blur: MaskFilter.blur(BlurStyle.solid, 10),
+                        //
+                        //         ),
+                        //         backgroundColor: Colors.red,
+                        //         size: Size(double.infinity, double.infinity),
+                        //
+                        //         waveAmplitude: 10,
+                        //       ),
+                        //     )
+                        // ),
+                        // Positioned(left: 10,bottom: 50,
+                        //   child: Transform(transform: Matrix4.skewX(1.4)..setEntry(3, 2, 0.1)..rotateX(-0.5),alignment: FractionalOffset.center,
+                        //     child: Container(width: 50, height: 50,
+                        //       child: ImageFiltered(imageFilter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+                        //
+                        //         child: Opacity( child: CachedNetworkImage(
+                        //           imageUrl: pokemon!.imageUrl,color: Colors.black,
+                        //
+                        //         ), opacity: 0.4),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        Positioned(
+                          bottom: 0,
+                          child: Container(
+                            width: Get.width,height: 10,decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30)),
+                              color: AppColors.backgroundColorWhite,boxShadow: [Shadows.whiteBackgroundShadow]
+                          ),
+                          )
+                          ,),
+                        // Positioned(
+                        //   left: 0,bottom: 50,
+                        //   child: Container(
+                        //     width: 250, height: 250,
+                        //     child: CachedNetworkImage(
+                        //         imageUrl: pokemon!.imageUrl,
+                        //
+                        //     ),
+                        //   ),
+                        // ),
+
+                        Positioned(
+
+                          bottom: 100,
                           child: CachedNetworkImage(
-                              imageUrl: pokemon!.imageUrl
+                            imageUrl: pokemon!.imageUrl,
+                            imageBuilder: (context, imageProvider) => Container(
+                              width: 250, height: 250,
+                              child: ShadowedImage(offset: Offset(5, 10),
+
+                                image: Image(image: imageProvider, fit: BoxFit.cover),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -68,7 +139,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
             ),
         SliverFillRemaining(
           child: Container(
-              color: AppColors.backgroundColorLight,
+              color: AppColors.backgroundColorWhite,
               child: TabBarView(
 
                 children: [
@@ -122,10 +193,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return new Container(
-      decoration: BoxDecoration(
-          color: AppColors.backgroundColorLight,
-          borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15))
-      ),
+      color: AppColors.backgroundColorWhite,
       margin: EdgeInsets.only(left: 0, right: 0),
        // ADD THE COLOR YOU WANT AS BACKGROUND.
       child: _tabBar,
@@ -154,7 +222,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
     return Container(
         decoration: BoxDecoration(
           //borderRadius: BorderRadius.circular(15),
-            color: AppColors.backgroundColorLight,
+            color: AppColors.backgroundColorWhite,
 
         ),
       margin: EdgeInsets.only(left:0, right: 0),
