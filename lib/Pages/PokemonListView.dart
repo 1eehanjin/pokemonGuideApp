@@ -95,10 +95,5 @@ class PokemonListView extends StatelessWidget {
       },
     );
   }
-  Widget TypeIcon(String typeName){
-    return Container(
-        height: 20, width: 20,
-        child: Image.asset("assets/images/Electric.png")
-    );
-  }
+
 }
