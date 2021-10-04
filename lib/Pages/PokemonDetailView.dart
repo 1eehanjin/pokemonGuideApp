@@ -29,181 +29,77 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
   Widget build(BuildContext context) {
     pokemon = Get.arguments;
     return Scaffold(
-
+      appBar: AppBar(),
       body: DefaultTabController(
         length: 3,
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(pinned: true,centerTitle: true,
-              backgroundColor: AppColors.backgroundColorWhite,
-              expandedHeight: 400.0,
-              flexibleSpace: FlexibleSpaceBar(centerTitle: false,
-                collapseMode: CollapseMode.pin,
-                title: Text(pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2)),
-                background: Hero(
-                  tag: pokemon!.name,
-                  child: Container(
-                    width: Get.width, height: 350,
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        // Positioned(child:
-                        //     Container(
-                        //       child: WaveWidget(
-                        //         config: CustomConfig(
-                        //           heightPercentages: [0.45, 0.46, 0.48, 0.51],
-                        //           colors: [
-                        //             Colors.transparent,
-                        //             Colors.transparent,
-                        //             Colors.white54,
-                        //             Colors.white,
-                        //           ],
-                        //           durations: [35000, 19440, 10800, 6000],
-                        //
-                        //           blur: MaskFilter.blur(BlurStyle.solid, 10),
-                        //
-                        //         ),
-                        //         backgroundColor: Colors.red,
-                        //         size: Size(double.infinity, double.infinity),
-                        //
-                        //         waveAmplitude: 10,
-                        //       ),
-                        //     )
-                        // ),
-                        // Positioned(left: 10,bottom: 50,
-                        //   child: Transform(transform: Matrix4.skewX(1.4)..setEntry(3, 2, 0.1)..rotateX(-0.5),alignment: FractionalOffset.center,
-                        //     child: Container(width: 50, height: 50,
-                        //       child: ImageFiltered(imageFilter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
-                        //
-                        //         child: Opacity( child: CachedNetworkImage(
-                        //           imageUrl: pokemon!.imageUrl,color: Colors.black,
-                        //
-                        //         ), opacity: 0.4),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        Positioned(
-                          bottom: 0,
-                          child: Container(
-                            width: Get.width,height: 10,decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30)),
-                              color: AppColors.backgroundColorWhite,boxShadow: [Shadows.whiteBackgroundShadow]
-                          ),
-                          )
-                          ,),
-                        // Positioned(
-                        //   left: 0,bottom: 50,
-                        //   child: Container(
-                        //     width: 250, height: 250,
-                        //     child: CachedNetworkImage(
-                        //         imageUrl: pokemon!.imageUrl,
-                        //
-                        //     ),
-                        //   ),
-                        // ),
+        child: ListView(
+          children: [
+            Hero(
+              tag: pokemon!.name,
+              child: Container(
+                width: Get.width, height: 300,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Positioned(
 
-                        Positioned(
+                      bottom: 50,
+                      child: CachedNetworkImage(
+                        imageUrl: pokemon!.imageUrl,
+                        imageBuilder: (context, imageProvider) => Container(
+                          width: 250, height: 250,
+                          child: ShadowedImage(offset: Offset(5, 10),
 
-                          bottom: 100,
-                          child: CachedNetworkImage(
-                            imageUrl: pokemon!.imageUrl,
-                            imageBuilder: (context, imageProvider) => Container(
-                              width: 250, height: 250,
-                              child: ShadowedImage(offset: Offset(5, 10),
-
-                                image: Image(image: imageProvider, fit: BoxFit.cover),
-                              ),
-                            ),
+                            image: Image(image: imageProvider, fit: BoxFit.cover),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-
-              ),
-            ),
-            SliverPersistentHeader(
-              delegate: _SliverAppBarDelegate(
-                TabBar(
-                  indicatorSize: TabBarIndicatorSize.label,
-                  tabs: [
-                    Tab(child: Text("정보", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4),),),
-                    Tab(child: Text("능력치", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4),)),
-                    Tab(child: Text("서식", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4),)),
                   ],
                 ),
               ),
-              pinned: true,
             ),
-        SliverFillRemaining(
-          child: Container(
-              color: AppColors.backgroundColorWhite,
-              child: TabBarView(
+            Container(alignment: Alignment.center,
+                child: Text(pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1))
+            ),
+            SizedBox(height: marginSizeBlock,),
+            Container(
+              margin: EdgeInsets.only(left: 24, right: 24),
+              decoration: BoxDecoration(
+                  color: AppColors.backgroundColorWhite,
+                  boxShadow: [Shadows.whiteBackgroundShadow],
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(15), topLeft: Radius.circular(15), bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))
 
+              ),
+              child: TabBar(
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: [
+                  Tab(child: Text("정보", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),),
+                  Tab(child: Text("능력치", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
+                  Tab(child: Text("서식", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
+                ],
+              ),
+            ),
+            Container(height: 500,
+              child: TabBarView(
                 children: [
                   PokemonInfo(pokemon),
                   Icon(Icons.directions_transit, size: 350),
                   Icon(Icons.directions_car, size: 350),
                 ],
               ),
-          ),
-        )
-          ]
+            ),
+          ],
+
+
 
 
           ),
         ),
 
     );
-    // return Scaffold(
-    //     body: DefaultTabController(
-    //       length: 3,
-    //       child: CustomScrollView(
-    //           slivers: <Widget>[
-
-    //             SliverList(
-    //                 delegate: SliverChildBuilderDelegate(
-    //                       (BuildContext context, int index) {
-    //                     return Container(
-    //                       height: 2000
-    //                     );
-    //                   },
-    //                   childCount: 1,
-    //                 )
-    //             )
-    //           ]
-    //       ),
-    //     )
-    // );
   }
 
-}
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate(this._tabBar);
-  final TabBar _tabBar;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new Container(
-      color: AppColors.backgroundColorWhite,
-      margin: EdgeInsets.only(left: 0, right: 0),
-       // ADD THE COLOR YOU WANT AS BACKGROUND.
-      child: _tabBar,
-    );
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
-  }
 }
 
 class PokemonInfo extends StatefulWidget {
@@ -220,11 +116,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          //borderRadius: BorderRadius.circular(15),
-            color: AppColors.backgroundColorWhite,
 
-        ),
       margin: EdgeInsets.only(left:0, right: 0),
       padding: EdgeInsets.only(left: 24, right: 24),
       child: Row(
@@ -234,7 +126,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: marginSizeM),
+                SizedBox(height: marginSizeBlock),
                 Text("Species", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                 SizedBox(height: marginSizeM),
                 Text("Height", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
@@ -256,7 +148,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: marginSizeM),
+                SizedBox(height: marginSizeBlock),
                 Text(widget.pokemon!.category, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                 SizedBox(height: marginSizeM),
                 Text(widget.pokemon!.height, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
