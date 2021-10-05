@@ -91,7 +91,7 @@ class PokemonListView extends StatelessWidget {
           )
       ),
       onPressed: (){
-        Get.to(PokemonDetailView(), arguments: pokemon);
+        Get.to(PokemonDetailView(), arguments: pokemon, transition: Transition.fade);
       },
     );
   }

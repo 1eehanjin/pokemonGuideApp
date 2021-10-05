@@ -4,6 +4,7 @@ import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
 import 'package:pokemon_guides_app/Datas/Data.dart';
@@ -62,16 +63,10 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                   ),
                 ),
               ),
-
-
               Container(height: 2500,
                 child: PokemonInfo(pokemon),
               ),
             ],
-
-
-
-
             ),
         ),
         );
@@ -97,8 +92,8 @@ class _PokemonInfoState extends State<PokemonInfo> {
   @override
   Widget build(BuildContext context) {
     return
-      Container(margin: EdgeInsets.only(left: 24, right: 24),
-        //margin: EdgeInsets.only(left: 24, right: 24),
+      Container(
+        margin: EdgeInsets.only(left: 24, right: 24),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: marginSizeBlock,),
@@ -199,30 +194,24 @@ class _PokemonInfoState extends State<PokemonInfo> {
             SizedBox(height: marginSizeM,),
 
 
-            StaggerDemo(title:  TitleButton("능력치"), contents: PokedexNumber(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("능력치"), contentsWidget: statusContents(),),
             SizedBox(height: marginSizeM,),
-            StaggerDemo(title:  TitleButton("방어 상성"), contents: PokedexNumber(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("방어 상성"), contentsWidget: typeContents(),),
             SizedBox(height: marginSizeM,),
-            StaggerDemo(title:  TitleButton("기술"), contents: PokedexNumber(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: skillContents(),),
             SizedBox(height: marginSizeM,),
-            StaggerDemo(title:  TitleButton("진화 및 모습"), contents: PokedexNumber(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: evolutionContents(),),
             SizedBox(height: marginSizeM,),
-            StaggerDemo(title:  TitleButton("도감별 설명"), contents: PokedexNumber(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("도감별 설명"), contentsWidget: regionalContents(),),
+            
             SizedBox(height: marginSizeM,),
-            StaggerDemo(title:  TitleButton("출현 장소"), contents: PokedexNumber(),)
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("출현 장소"), contentsWidget: locationContents(),)
 
           ],
         ),
       );
   }
-  Widget TypeIcon(String typeName){
-    return Container(
-        height: 20, width: 20,
-        child: Image.asset("assets/images/Electric.png")
-    );
-  }
-  
-  Widget PokedexNumber(){
+  Widget statusContents(){
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -267,8 +256,261 @@ class _PokemonInfoState extends State<PokemonInfo> {
       ),
     );
   }
-  
-  Widget TitleButton(String title){
+  Widget typeContents(){
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: double.infinity,
+              child: Text("매우 강함", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
+          SizedBox(height: marginSizeXS,),
+          Wrap(
+            alignment: WrapAlignment.start,
+            children: [
+            Container(
+              child: Text("Grass", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
+              padding: EdgeInsets.only(left: 10, right: 10),
+              decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            )
+          ],),
+          SizedBox(height: marginSizeM,),
+
+        ],
+
+
+      ),
+    );
+  }
+  Widget skillContents(){
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+        ],
+
+
+      ),
+    );
+  }
+
+  Widget evolutionContents(){
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+        ],
+
+
+      ),
+    );
+  }
+  Widget regionalContents(){
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeXS,),
+          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+        ],
+
+
+      ),
+    );
+  }
+  Widget locationContents(){
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("1세대", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("Red", style: getBoldKrFont(Colors.red, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 2,fit: FlexFit.tight,
+                child: Text("Green", style: getBoldKrFont(Colors.green, FontSizes.paragraph),),
+              ),
+
+              Flexible(
+                flex: 6,fit: FlexFit.tight,
+                child: Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+              ),
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Text("2세대", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
+          SizedBox(height: marginSizeS,),
+          Text("금", style: getBoldKrFont(Colors.amber, FontSizes.paragraph)),
+          SizedBox(height: marginSizeXS,),
+          Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+          SizedBox(height: marginSizeM,),
+          Text("은", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.paragraph)),
+    SizedBox(height: marginSizeXS,),
+          Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+
+          SizedBox(height: marginSizeM,),
+        ],
+
+
+      ),
+    );
+  }
+
+  Widget pokemonInfoTitle(String title){
     return Container(
       child: Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2),),
       width: double.infinity,height: 60,alignment: Alignment.centerLeft,
@@ -276,157 +518,46 @@ class _PokemonInfoState extends State<PokemonInfo> {
   }
 }
 
-
-
-class StaggerAnimation extends StatelessWidget {
-  StaggerAnimation({Key? key, required this.controller, required this.title, required this.contents})
-      :
-        height = Tween<double>(begin: 60.0, end: 400.0).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: const Interval(
-              0.0,
-              0.5,
-              curve: Curves.ease,
-            ),
-          ),
-        ),
-        opacity = Tween<double>(
-          begin: 0,
-          end: 1,
-        ).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: const Interval(
-              0.5,
-              1.0,
-              curve: Curves.ease,
-            ),
-          ),
-        ),
-        // padding = EdgeInsetsTween(
-        //   begin: const EdgeInsets.only(bottom: 16.0),
-        //   end: const EdgeInsets.only(bottom: 75.0),
-        // ).animate(
-        //   CurvedAnimation(
-        //     parent: controller,
-        //     curve: const Interval(
-        //       0.250,
-        //       0.375,
-        //       curve: Curves.ease,
-        //     ),
-        //   ),
-        // ),
-
-        super(key: key);
-
-  final Animation<double> controller;
-  final Animation<double> opacity;
-  final Animation<double> height;
-  final Widget title;
-  final Widget contents;
-  bool visibility =false;
-  //final Animation<EdgeInsets> padding;
-
-  // This function is called each time the controller "ticks" a new frame.
-  // When it runs, all of the animation's values will have been
-  // updated to reflect the controller's current value.
-  Widget _buildAnimation(BuildContext context, Widget? child) {
-    visibility = !visibility;
-    return Container(
-
-      alignment: Alignment.topCenter,
-      child: Container(
-        width: double.infinity,
-        height: height.value,clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          color: AppColors.backgroundColorWhite,
-          boxShadow: [Shadows.whiteBackgroundShadow],
-          borderRadius: BorderRadius.circular(15),
-        ),
-        padding: EdgeInsets.only(left: 30, right: 30),
-        child: Column(
-          children: [
-            title,
-            Opacity(
-                opacity: opacity.value,
-                child: contents
-                ),
-          ],
-        ),
-        ),
-
-    );
-  }
-
+class PokemonInfoCard extends StatefulWidget {
+  PokemonInfoCard({required this.titleWidget, required this.contentsWidget});
+  
+  final titleWidget;
+  final contentsWidget;
+  
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      builder: _buildAnimation,
-      animation: controller,
-    );
-  }
+  _PokemonInfoCardState createState() => _PokemonInfoCardState();
 }
 
-class StaggerDemo extends StatefulWidget {
-  StaggerDemo({Key? key, required this.title, required this.contents}){
-
-  }
-
-  final Widget title;
-  final Widget contents;
-  @override
-  _StaggerDemoState createState() => _StaggerDemoState();
-}
-
-class _StaggerDemoState extends State<StaggerDemo>
-    with TickerProviderStateMixin {
-  late AnimationController _controller;
-  final timeDilation = 10.0;
+class _PokemonInfoCardState extends State<PokemonInfoCard> {
   bool isOpened = false;
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-        duration: const Duration(milliseconds: 450), vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Future<void> _playAnimation() async {
-    try {
-      await _controller.forward().orCancel;
-    } on TickerCanceled {
-      // the animation got canceled, probably because we were disposed
-    }
-  }
-
-  Future<void> _reverseAnimation() async {
-    try {
-      await _controller.reverse().orCancel;
-    } on TickerCanceled {
-      // the animation got canceled, probably because we were disposed
-    }
-  }
+  
   @override
   Widget build(BuildContext context) {
-     // 1.0 is normal animation speed.
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        isOpened = !isOpened;
-        isOpened ? _reverseAnimation(): _playAnimation() ;
+      onTap: (){
+        setState(() {
+          isOpened = !isOpened;
+        });
       },
       child: Container(
-        width: double.infinity,
-
-
-        child: StaggerAnimation(controller: _controller.view, title: widget.title,contents: widget.contents, ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [Shadows.whiteBackgroundShadow],
+            color: AppColors.backgroundColorWhite
+        ),padding: EdgeInsets.only(left: 24, right: 24),
+        child: AnimatedCrossFade(firstChild: widget.titleWidget,
+            secondChild: Column(
+          children: [
+            widget.titleWidget,
+            widget.contentsWidget,
+          ],
+        ),
+            crossFadeState: isOpened == false ? CrossFadeState.showFirst : CrossFadeState.showSecond, duration: Duration(milliseconds: 500)),
       ),
     );
   }
 }
+
+
+
+

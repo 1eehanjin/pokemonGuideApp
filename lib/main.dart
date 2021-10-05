@@ -194,7 +194,7 @@ class MyHomePage extends StatelessWidget {
   Widget GuideElementButton(String title){
     return MaterialButton(
       onPressed: (){
-        Get.to(PokemonListView());
+        Get.to(PokemonListView(), transition: Transition.fadeIn);
       },
       child: Column(
         children: [
