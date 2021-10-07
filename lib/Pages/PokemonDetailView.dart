@@ -198,7 +198,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
             SizedBox(height: marginSizeM,),
             PokemonInfoCard(titleWidget:  pokemonInfoTitle("방어 상성"), contentsWidget: typeContents(),),
             SizedBox(height: marginSizeM,),
-            PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: skillContents(),),
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: moveContents(),),
             SizedBox(height: marginSizeM,),
             PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: evolutionContents(),),
             SizedBox(height: marginSizeM,),
@@ -264,18 +264,11 @@ class _PokemonInfoState extends State<PokemonInfo> {
           Container(
             width: double.infinity,
               child: Text("매우 강함", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: marginSizeS,),
           Wrap(
-            alignment: WrapAlignment.start,
+            alignment: WrapAlignment.start,spacing: marginSizeXS,runSpacing: marginSizeXS,
             children: [
-            Container(
-              child: Text("Grass", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
-              padding: EdgeInsets.only(left: 10, right: 10),
-              decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            )
+              TypeTextBox("Electric"),TypeTextBox("Bug"),TypeTextBox("Ground"),TypeTextBox("Dark"),TypeTextBox("Fairy"),TypeTextBox("Fire"),
           ],),
           SizedBox(height: marginSizeM,),
 
@@ -285,42 +278,40 @@ class _PokemonInfoState extends State<PokemonInfo> {
       ),
     );
   }
-  Widget skillContents(){
+  Widget moveContents(){
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(spacing: marginSizeS,
             children: [
-              Flexible(
-                flex: 2,fit: FlexFit.tight,
-                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-
-              Flexible(
-                flex: 6,fit: FlexFit.tight,
-                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-            ],
-          ),
-          SizedBox(height: marginSizeXS,),
-          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+            ChoiceChip(label: Text("1세대"), selected: true,),ChoiceChip(label: Text("2세대"), selected: false),ChoiceChip(label: Text("3세대"), selected: false),ChoiceChip(label: Text("4세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),
+          ],),
+        SizedBox(height: marginSizeM,),
+          Text("1세대 : 레드, 블루, 그린", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.h4)),
           SizedBox(height: marginSizeM,),
+        Text("레벨업으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
+          SizedBox(height: marginSizeS,),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Flexible(
-                flex: 2,fit: FlexFit.tight,
-                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-
-              Flexible(
-                flex: 6,fit: FlexFit.tight,
-                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
+              Flexible(child: Text("4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(child: Container(
+                alignment: Alignment.centerLeft,
+                  child: Chip(label: Text("몸통박치기",  style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)))), flex: 4,fit: FlexFit.tight, ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(child: Text("4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Chip(label: Text("몸통박치기",  style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)))), flex: 4,fit: FlexFit.tight, ),
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Text("기술/비전머신으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
           SizedBox(height: marginSizeXS,),
           Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
           SizedBox(height: marginSizeM,),
