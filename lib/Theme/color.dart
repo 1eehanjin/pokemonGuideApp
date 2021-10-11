@@ -41,7 +41,7 @@ class AppColors{
 
   static const Color errorColor = Color(0xFFFF3120);
 
-  static const Color brandColor = Colors.blueAccent;
+  static const Color brandColor = Color(0xFF1036F0);
 
   static const Color backgroundColorLight = Color(0xFFF8FAFB); //greyScale 0
   static const Color backgroundColorWhite = Color(0xFFFFFFFF); //white Color

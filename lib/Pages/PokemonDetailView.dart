@@ -3,10 +3,13 @@ import 'dart:ui';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
+import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
 import 'package:pokemon_guides_app/Datas/Data.dart';
 import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
@@ -17,6 +20,8 @@ import 'package:shadowed_image/shadowed_image.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
+import 'PokemonListView.dart';
 
 
 class PokemonDetailView extends StatefulWidget {
@@ -30,46 +35,19 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
   @override
   Widget build(BuildContext context) {
     pokemon = Get.arguments;
-    return DefaultTabController(
-        length: 6,
-        child: Scaffold(
+    return Scaffold(
 
-          appBar: AppBar(title: Text(pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1))),
-          body: ListView(
-            children: [
-              SizedBox(height: marginSizeBlock,),
-              Hero(
-                tag: pokemon!.name,
-                child: Container(
-                  width: Get.width, height: 250,
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Positioned(
+      appBar: AppBar(title: Text(pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1))),
+      body: ListView(
+        children: [
+          SizedBox(height: marginSizeBlock,),
 
-                        bottom: 0,
-                        child: CachedNetworkImage(
-                          imageUrl: pokemon!.imageUrl,
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: 250, height: 250,
-                            child: ShadowedImage(offset: Offset(5, 10),
-
-                              image: Image(image: imageProvider, fit: BoxFit.cover),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(height: 2500,
-                child: PokemonInfo(pokemon),
-              ),
-            ],
-            ),
+          Container(
+            child: PokemonInfo(pokemon),
+          ),
+        ],
         ),
-        );
+    );
 
 
   }
@@ -80,7 +58,7 @@ class PokemonInfo extends StatefulWidget {
   @override
   _PokemonInfoState createState() => _PokemonInfoState();
 
-  final PokemonModel? pokemon;
+  PokemonModel? pokemon;
   PokemonInfo(this.pokemon){
 
   }
@@ -96,6 +74,31 @@ class _PokemonInfoState extends State<PokemonInfo> {
         margin: EdgeInsets.only(left: 24, right: 24),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Hero(
+              tag: widget.pokemon!.name,
+              child: Container(
+                width: Get.width, height: 250,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Positioned(
+
+                      bottom: 0,
+                      child: CachedNetworkImage(
+                        imageUrl: widget.pokemon!.imageUrl,
+                        imageBuilder: (context, imageProvider) => Container(
+                          width: 250, height: 250,
+                          child: ShadowedImage(offset: Offset(5, 10),
+
+                            image: Image(image: imageProvider, fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(height: marginSizeBlock,),
 
             Container(
@@ -164,7 +167,91 @@ class _PokemonInfoState extends State<PokemonInfo> {
                               ]
                           ),
                           SizedBox(height: marginSizeM),
-                          Text(widget.pokemon!.abilities![0], style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                          RichText(
+                            text: TextSpan(
+                              text: widget.pokemon!.abilities![0],
+                              style:getBoldKrFont(Colors.blue, FontSizes.paragraph),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = (){
+                                Get.bottomSheet(
+
+                                DraggableScrollableSheet(
+                                  initialChildSize: 0.4,
+                                  minChildSize: 0.4, maxChildSize: 0.9,
+
+                                    builder: (_, controller) {
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColors.backgroundColorWhite,
+                                        borderRadius: BorderRadius.only(
+
+                                            topRight: Radius.circular(15), topLeft: Radius.circular(15)
+                                        )),
+                                    child: SingleChildScrollView(
+
+                                      controller: controller,
+                                      child: Container(
+
+
+                                        width: double.infinity,
+
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(height: marginSizeBlock,),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide, top: marginSizeM),
+                                              child: Text(widget.pokemon!.abilities![0], style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
+                                            ),
+                                            SizedBox(height: marginSizeM,),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
+                                              child: Text("HP가 1/3 이하일 때 풀 타입 기술의 위력이 1.5배가 된다.", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                                            ),
+                                            SizedBox(height: marginSizeBlock,),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
+                                              child: Text("이 특성을 가진 포켓몬", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h3),),
+                                            ),
+                                            SizedBox(height: marginSizeM,),
+                                            GridView.builder(
+
+
+                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
+                                              physics: NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              itemCount: 10,
+                                              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 2,
+                                                childAspectRatio: 18/14,
+                                              ),
+                                              itemBuilder: (BuildContext context, int index) {
+                                                return GestureDetector(
+
+                                                    onTap: (){
+                                                      Get.back();
+                                                      setState(() {
+                                                        widget.pokemon = Data.pokemonList![index];
+                                                      });},
+                                                    child: PokemonCard(pokemon: Data.pokemonList![index])
+                                                );
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                                  isScrollControlled: true,
+
+
+
+                                );
+
+                                  }),
+                            ),
+
                           SizedBox(height: marginSizeM),
                           Text(widget.pokemon!.category, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                           SizedBox(height: marginSizeM),
@@ -205,8 +292,8 @@ class _PokemonInfoState extends State<PokemonInfo> {
             PokemonInfoCard(titleWidget:  pokemonInfoTitle("도감별 설명"), contentsWidget: regionalContents(),),
             
             SizedBox(height: marginSizeM,),
-            PokemonInfoCard(titleWidget:  pokemonInfoTitle("출현 장소"), contentsWidget: locationContents(),)
-
+            PokemonInfoCard(titleWidget:  pokemonInfoTitle("출현 장소"), contentsWidget: locationContents(),),
+            SizedBox(height: marginSizeBlock,),
           ],
         ),
       );

@@ -38,6 +38,7 @@ dependencies:
   bubble_tab_indicator: ^0.1.6
   shadowed_image: ^1.0.3
   simple_shadow: ^0.2.0
+  modal_bottom_sheet: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

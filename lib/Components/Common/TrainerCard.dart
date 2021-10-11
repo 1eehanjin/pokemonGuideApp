@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 
 class TrainerCard extends StatelessWidget {
@@ -9,7 +10,7 @@ class TrainerCard extends StatelessWidget {
     return Container(
         margin: EdgeInsets.only(bottom:20, left: marginSizeSide, right: marginSizeSide),
         decoration: BoxDecoration(
-            color: Colors.red[400],
+            color: AppColors.brandColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [BoxShadow(
               color: Colors.black.withOpacity(0.08),
