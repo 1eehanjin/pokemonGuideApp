@@ -409,7 +409,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          evolutionPokemonCard(widget.pokemon!.name),
+          evolutionPokemonCard(),
           SizedBox(height: marginSizeXS,),
 
         ],
@@ -419,37 +419,47 @@ class _PokemonInfoState extends State<PokemonInfo> {
     );
   }
 
-  Widget evolutionPokemonCard(String pokemonName){
+  Widget evolutionPokemonCard(){
 
-    PokemonModel? pokemon = Data.pokemonMap[pokemonName];
-    print(pokemon);
-    if(pokemon == null){
+    List<String>? evolutionPokemonList = widget.pokemon!.evolutions;
+    if(evolutionPokemonList!.length == 0){
       return Container();
     }
-    return Container(
-      height: 200,
-      child: Row(
-        children: [
-          Flexible(
-            flex: 2,fit: FlexFit.tight,
-            child: Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          ),
 
-          Flexible(
-            flex: 2,fit: FlexFit.tight,
-            child: Text(pokemon.id, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          ),
-
-          Flexible(
-              flex: 2,fit: FlexFit.tight,
-              child:
+    return ListView.builder(
+      shrinkWrap: true,physics: NeverScrollableScrollPhysics(),
+      itemCount: evolutionPokemonList.length,
+      itemBuilder: (context, index){
+        PokemonModel? pokemon = Data.pokemonMap[evolutionPokemonList[index]];
+        return Container(
+          margin: EdgeInsets.only(bottom: marginSizeM),
+          height: 100,
+          child: Row(
+            children: [
               CachedNetworkImage(
-                imageUrl: pokemon.imageUrl,
-              )
+                imageUrl: pokemon!.imageUrl,
+                width: 100, height: 100,
+              ),
+              SizedBox(width: marginSizeM,),
+              Flexible(
 
-          )
-        ],
-      ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                    Text(pokemon.id, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                  ],
+                ),
+              ),
+
+
+
+
+            ],
+          ),
+        );
+      },
+
     );
   }
 
