@@ -10,7 +10,7 @@
     "weight": "15.2 lbs",
     "typeofpokemon": ["Grass", "Poison"],
     "weaknesses": ["Fire", "Flying", "Ice", "Psychic"],
-    "evolutions": ["#001", "#002", "#003"],
+    "evolutions": ["Bulbasaur", "Ivysaur", "Venusaur"],
     "abilities": ["Overgrow"],
     "hp": 20,
     "attack": 30,

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:pokemon_guides_app/Datas/Data.dart';
 
 import 'JsonPokemonModel.dart';
+import 'item_model.dart';
 
 
 class DataSource {
@@ -17,8 +18,17 @@ class DataSource {
     final data = (jsonResponse as List)
         .map((item) => PokemonModel.fromJson(item))
         .toList();
-    print(data);
     return data;
+  }
+
+  Future<List<ItemModel>> getItems() async {
+    final String jsonString = await rootBundle.loadString('assets/datas/items.json');
+    print(jsonString);
+    final jsonResponse = json.decode(jsonString);
+    final itemData = (jsonResponse as List)
+        .map((item) => ItemModel.fromJson(item))
+        .toList();
+    return itemData;
   }
 
 

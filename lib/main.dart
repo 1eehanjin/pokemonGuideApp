@@ -6,6 +6,7 @@ import 'package:pokemon_guides_app/Datas/Data.dart';
 import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
 import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
 import 'package:pokemon_guides_app/Pages/PokemonListView.dart';
+import 'package:pokemon_guides_app/Pages/item_list_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/textStyles.dart';
@@ -88,12 +89,12 @@ class MyHomePage extends StatelessWidget {
                             spacing: marginSizeM,
                             runSpacing: marginSizeM,
                             children: [
-                              GuideElementButton("포켓몬"),
-                              GuideElementButton("기술"),
-                              GuideElementButton("아이템"),
-                              GuideElementButton("속성"),
-                              GuideElementButton("지도"),
-                              GuideElementButton("내 정보"),
+                              GuideElementButton("포켓몬", PokemonListView()),
+                              GuideElementButton("기술", PokemonListView()),
+                              GuideElementButton("아이템", ItemListView()),
+                              GuideElementButton("속성", PokemonListView()),
+                              GuideElementButton("지도", PokemonListView()),
+                              GuideElementButton("내 정보", PokemonListView()),
                             ],
                           ),
                         ),
@@ -191,10 +192,10 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Widget GuideElementButton(String title){
+  Widget GuideElementButton(String title, Widget page){
     return MaterialButton(
       onPressed: (){
-        Get.to(PokemonListView(), transition: Transition.fadeIn);
+        Get.to(page, transition: Transition.fadeIn);
       },
       child: Column(
         children: [
