@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Datas/PokemonTypes.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/images.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -36,41 +37,81 @@ class TypeImage extends StatelessWidget {
 
 
 class TypeTextBox extends StatelessWidget {
-  TypeTextBox(this.typeName);
-  final String typeName;
+  TypeTextBox(this.type);
+  final PokemonTypes type;
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      child: Text(typeName, style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
+      child: Text(type.value, style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
       padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
-        color: typeColor(typeName),
+        color: typeColor(type),
         borderRadius: BorderRadius.circular(5),
       ),
     );
   }
 
 
-  Color typeColor(String typeName) {
-    switch(typeName){
-      case "Electric":return Colors.yellow;
-      case "Bug":return Colors.lightGreen;
-      case "Dark":return Colors.black;
-      case "Fairy":return Colors.purpleAccent;
-      case "Fighting":return Colors.deepOrange;
-      case "Fire":return Colors.red;
-      case "Flying":return Colors.lightBlueAccent;
-      case "Ghost":return Colors.deepPurple;
-      case "Grass":return Colors.green;
-      case "Ground":return Colors.brown;
-      case "Ice":return Colors.cyanAccent;
-      case "Normal":return Colors.grey;
-      case "Poison":return Colors.purple;
-      case "Psychic":return Colors.pinkAccent;
-      case "Rock":return Colors.orange;
-      case "Steel":return Colors.blueGrey;
-      case "Water":return Colors.blue;
+  Color typeColor(PokemonTypes pokemonType) {
+    switch(pokemonType){
+      case PokemonTypes.grass:
+        return TypeColors.lightGreen;
+
+      case PokemonTypes.bug:
+        return TypeColors.lightTeal;
+
+      case PokemonTypes.fire:
+        return TypeColors.lightRed;
+
+      case PokemonTypes.water:
+        return TypeColors.blue;
+
+      case PokemonTypes.fighting:
+        return TypeColors.red;
+
+      case PokemonTypes.normal:
+        return TypeColors.beige;
+
+      case PokemonTypes.electric:
+        return TypeColors.lightYellow;
+
+      case PokemonTypes.psychic:
+        return TypeColors.lightPink;
+
+      case PokemonTypes.poison:
+        return TypeColors.lightPurple;
+
+      case PokemonTypes.ghost:
+        return TypeColors.purple;
+
+      case PokemonTypes.ground:
+        return TypeColors.lightBrown;
+
+      case PokemonTypes.rock:
+        return TypeColors.darkBrown;
+
+      case PokemonTypes.dark:
+        return TypeColors.black;
+
+      case PokemonTypes.dragon:
+        return TypeColors.violet;
+
+      case PokemonTypes.fairy:
+        return TypeColors.pink;
+
+      case PokemonTypes.flying:
+        return TypeColors.lilac;
+
+      case PokemonTypes.ice:
+        return TypeColors.lightCyan;
+
+      case PokemonTypes.steel:
+        return TypeColors.grey;
+
+      default:
+        return TypeColors.teal;
     }
 
     return Colors.white;

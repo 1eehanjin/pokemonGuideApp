@@ -54,7 +54,7 @@ extension PokemonTypesX on PokemonTypes {
         return TypeColors.lightRed;
 
       case PokemonTypes.water:
-        return TypeColors.lightBlue;
+        return TypeColors.blue;
 
       case PokemonTypes.fighting:
         return TypeColors.red;
@@ -75,10 +75,10 @@ extension PokemonTypesX on PokemonTypes {
         return TypeColors.purple;
 
       case PokemonTypes.ground:
-        return TypeColors.darkBrown;
+        return TypeColors.lightBrown;
 
       case PokemonTypes.rock:
-        return TypeColors.lightBrown;
+        return TypeColors.darkBrown;
 
       case PokemonTypes.dark:
         return TypeColors.black;
@@ -99,10 +99,9 @@ extension PokemonTypesX on PokemonTypes {
         return TypeColors.grey;
 
       default:
-        return TypeColors.lightBlue;
+        return TypeColors.teal;
     }
   }
-
 }
 final _pokemonEffectivenessMap = <PokemonTypes, Map<PokemonTypes, double>>{
   PokemonTypes.normal: {

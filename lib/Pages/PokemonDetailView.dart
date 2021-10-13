@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
 import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
 import 'package:pokemon_guides_app/Datas/Data.dart';
+import 'package:pokemon_guides_app/Datas/PokemonType.dart';
+import 'package:pokemon_guides_app/Datas/PokemonTypes.dart';
 import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
@@ -339,19 +341,54 @@ class _PokemonInfoState extends State<PokemonInfo> {
     );
   }
   Widget typeContents(){
+
+    List<PokemonTypes> pokemonTypes = [];
+    Map<PokemonTypes, double> pokemonEffectiveness= {};
+    List<PokemonTypes> veryWeakTypes = [];
+    List<PokemonTypes> weakTypes = [];
+    List<PokemonTypes> normalTypes = [];
+    List<PokemonTypes> veryResistantTypes = [];
+    List<PokemonTypes> resistantTypes = [];
+    List<PokemonTypes> ineffectiveTypes = [];
+
+    for (String typeString in widget.pokemon!.types!) {
+      pokemonTypes.add(PokemonTypesX.parse(typeString));
+    }
+
+    PokemonTypes.values.forEach((element) {
+      double effectiveness = 1;
+      for (PokemonTypes pokemonType in pokemonTypes){
+        effectiveness = effectiveness * (element.effectiveness?[pokemonType] ?? 1.0);
+      }
+      pokemonEffectiveness[element] = effectiveness;
+      if(effectiveness == 4)
+        veryWeakTypes.add(element);
+      if(effectiveness == 2)
+        weakTypes.add(element);
+      if(effectiveness == 1)
+        normalTypes.add(element);
+      if(effectiveness == 0.5)
+        resistantTypes.add(element);
+      if(effectiveness == 0.25)
+        veryResistantTypes.add(element);
+      if(effectiveness == 0.0)
+        ineffectiveTypes.add(element);
+    });
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
-              child: Text("매우 강함", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
+              child: Text("약함", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
           SizedBox(height: marginSizeS,),
           Wrap(
             alignment: WrapAlignment.start,spacing: marginSizeXS,runSpacing: marginSizeXS,
             children: [
-              TypeTextBox("Electric"),TypeTextBox("Bug"),TypeTextBox("Ground"),TypeTextBox("Dark"),TypeTextBox("Fairy"),TypeTextBox("Fire"),
-          ],),
+              for (PokemonTypes pokemonType in weakTypes)
+                TypeTextBox(pokemonType)
+              ],),
           SizedBox(height: marginSizeM,),
 
         ],
