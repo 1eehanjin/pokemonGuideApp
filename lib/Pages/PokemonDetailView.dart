@@ -81,12 +81,18 @@ class _PokemonInfoState extends State<PokemonInfo> {
                 color: AppColors.backgroundColorLight,
                 child: Hero(
                   tag: widget.pokemon!.name,
-                  child: Container(margin: EdgeInsets.all(70),
-
+                  child: Container(
+                    margin: EdgeInsets.all(70),
                     child: CachedNetworkImage(
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       imageUrl: widget.pokemon!.imageUrl,
+                      imageBuilder: (context, imageProvider) => Container(
 
+                        child: ShadowedImage(offset: Offset(5, 5),
+
+                          image: Image(image: imageProvider,),
+                        ),
+                      ),
                     ),
                   ),
                 ),

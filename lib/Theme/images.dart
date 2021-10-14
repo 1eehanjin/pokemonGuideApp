@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppImages{
+  static final pokemonGuide = Image.asset("pika.png");
 
 }
 

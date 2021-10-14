@@ -54,7 +54,6 @@ class MyHomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
       backgroundColor: AppColors.backgroundColorLight,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColorLight,
@@ -67,10 +66,6 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               Column(
                 children: [
-                  SizedBox(height: marginSizeBlock),
-                  SizedBox(height: marginSizeBlock),
-                  TrainerCard(),
-
                   Padding(
                     padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
                     child: Column(
@@ -99,90 +94,10 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: marginSizeBlock),
-                        Text("포켓몬 뉴스", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
-                        SizedBox(height: marginSizeM),
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 80,
-                                height: 80,
-                                color: AppColors.backgroundColorGrey,
-                              ),
-                              Expanded(
-                                  child: Container(
-
-                                    height: 80,
-                                    color: AppColors.backgroundColorLight,
-                                  ),)
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: marginSizeM),
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 80,
-                                height: 80,
-                                color: AppColors.backgroundColorGrey,
-                              ),
-                              Expanded(
-                                child: Container(
-
-                                  height: 80,
-                                  color: AppColors.backgroundColorLight,
-                                ),)
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: marginSizeM),
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 80,
-                                height: 80,
-                                color: AppColors.backgroundColorGrey,
-                              ),
-                              Expanded(
-                                child: Container(
-
-                                  height: 80,
-                                  color: AppColors.backgroundColorLight,
-                                ),)
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: marginSizeColorBlock),
 
                       ],
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
-                    color: AppColors.backgroundColorLight,
-                    padding: EdgeInsets.only(left: marginSizeSide,right: marginSizeSide,top: marginSizeColorBlock),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("커뮤니티", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
-                        SizedBox(height: marginSizeM,),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.backgroundColorWhite, borderRadius: BorderRadius.circular(10)
-                          ),
-                          height: 300,
-                        ),
-                        SizedBox(height: marginSizeColorBlock,)
-                      ],
-
-                    )
-                  )
-
 
                 ],
               ),
