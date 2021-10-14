@@ -2,13 +2,16 @@ import 'dart:ui';
 
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:get/get.dart';
 import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
 import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
+import 'package:pokemon_guides_app/Components/Common/stats_bar_chart.dart';
 import 'package:pokemon_guides_app/Datas/Data.dart';
 import 'package:pokemon_guides_app/Datas/PokemonType.dart';
 import 'package:pokemon_guides_app/Datas/PokemonTypes.dart';
@@ -37,6 +40,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
   Widget build(BuildContext context) {
     pokemon = Get.arguments;
     return Scaffold(
+      backgroundColor: AppColors.backgroundColorLight,
       body: PokemonInfo(pokemon),
     );
 
@@ -74,13 +78,13 @@ class _PokemonInfoState extends State<PokemonInfo> {
               collapseMode: CollapseMode.pin,
               title: Text(widget.pokemon!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2)),
               background: Container(
+                color: AppColors.backgroundColorLight,
                 child: Hero(
                   tag: widget.pokemon!.name,
                   child: Container(margin: EdgeInsets.all(70),
 
                     child: CachedNetworkImage(
                       fit: BoxFit.contain,
-
                       imageUrl: widget.pokemon!.imageUrl,
 
                     ),
@@ -146,18 +150,9 @@ class _PokemonInfoState extends State<PokemonInfo> {
                                     SizedBox(height: marginSizeM),
                                     Row(
                                         children: [
-                                          Container(
-                                              height: 20, width: 20,
-                                              child: TypeImage(widget.pokemon!.types![0])
-                                          ),
-                                          Text(widget.pokemon!.types![0], style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                          SizedBox(width: 20,),
-                                          Container(
-                                              height: 20, width: 20,
-                                              child: widget.pokemon!.types!.length > 1 ?TypeImage(widget.pokemon!.types![1]) : Container()
-                                          ),
-                                          widget.pokemon!.types!.length > 1 ?Text(widget.pokemon!.types![1], style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),): Container(),
-
+                                          TypeTextBox(PokemonTypesX.parse(widget.pokemon!.types![0]) ),
+                                          SizedBox(width: marginSizeXS,),
+                                          widget.pokemon!.types!.length > 1 ?TypeTextBox(PokemonTypesX.parse(widget.pokemon!.types![1]) ) : Container()
                                         ]
                                     ),
                                     SizedBox(height: marginSizeM),
@@ -167,11 +162,11 @@ class _PokemonInfoState extends State<PokemonInfo> {
                                           style:getBoldKrFont(Colors.blue, FontSizes.paragraph),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = (){
+                                            // TODO: sliding sheet 로 변경
                                               Get.bottomSheet(
-
                                                 DraggableScrollableSheet(
-                                                    initialChildSize: 0.4,
-                                                    minChildSize: 0.4, maxChildSize: 0.9,
+                                                    initialChildSize: 0.6,
+                                                    minChildSize: 0.4, maxChildSize: 1,
 
                                                     builder: (_, controller) {
                                                       return Container(
@@ -237,7 +232,9 @@ class _PokemonInfoState extends State<PokemonInfo> {
                                                         ),
                                                       );
                                                     }),
-                                                isScrollControlled: true,
+                                                isScrollControlled: false,
+                                                isDismissible: true,
+                                                enableDrag: true
 
 
 
@@ -281,7 +278,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
                   SizedBox(height: marginSizeM,),
                   PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: moveContents(),),
                   SizedBox(height: marginSizeM,),
-                  PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: evolutionContents(),),
+                  PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: formContents(),),
                   SizedBox(height: marginSizeM,),
                   PokemonInfoCard(titleWidget:  pokemonInfoTitle("도감별 설명"), contentsWidget: regionalContents(),),
 
@@ -295,45 +292,46 @@ class _PokemonInfoState extends State<PokemonInfo> {
           ]
       );
   }
+
+
   Widget statusContents(){
+
+    const numberOfFeatures = 6;
+    const ticks = [20, 40, 60, 80, 100, 120];
+    var features = ["HP", "공격", "방어","스피드", "특수방어", "특수공격",];
+    var data = [
+      [120,120,120,120,120,120],
+      [widget.pokemon!.hp.floor(),widget.pokemon!.attack.floor(),widget.pokemon!.defense.floor(),widget.pokemon!.speed.floor(),widget.pokemon!.specialDefense.floor(),widget.pokemon!.specialAttack.floor()]
+    ];
+
+    features = features.sublist(0, numberOfFeatures.floor());
+    data = data
+        .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
+        .toList();
+
+
     return Container(
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 2,fit: FlexFit.tight,
-                child: Text("관동", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
+          Padding(
+            padding: EdgeInsets.only(left: 12, right: 12, bottom: marginSizeBlock),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: RadarChart(outlineColor: Colors.white,
+                axisColor: Colors.white,
+                graphColors: [Color(0XFFDDDDDD), Color(0x66BA55D3)],
+                data: data,
+                ticks: ticks,
+                features: features,
+                sides: 6,
+                reverseAxis: false,
+                featuresTextStyle: getRegularKrFont(AppColors.fontColorBlack, FontSizes.h4),
+              )
+            ),
+          )
 
-              Flexible(
-                flex: 6,fit: FlexFit.tight,
-                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-            ],
-          ),
-          SizedBox(height: marginSizeXS,),
-          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 2,fit: FlexFit.tight,
-                child: Text("전국", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-
-              Flexible(
-                flex: 6,fit: FlexFit.tight,
-                child: Text("#001", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-              ),
-            ],
-          ),
-          SizedBox(height: marginSizeXS,),
-          Text(widget.pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
         ],
 
 
@@ -379,17 +377,51 @@ class _PokemonInfoState extends State<PokemonInfo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          typeContent("매우 약함", "×4",  veryWeakTypes),
+          typeContent("약함", "×2", weakTypes),
+          typeContent("보통", "×1", normalTypes),
+          typeContent("강함", "×0.5", resistantTypes),
+          typeContent("매우 강함", "×0.25", veryResistantTypes),
+          typeContent("효과 없음", "×0",ineffectiveTypes)
+        ],
+
+
+      ),
+    );
+  }
+
+  Widget typeContent(String title,String effectiveness, List<PokemonTypes> types){
+    if(types.isEmpty){
+      return Container();
+    }
+
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Container(
-            width: double.infinity,
-              child: Text("약함", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),)),
-          SizedBox(height: marginSizeS,),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: 2,fit: FlexFit.tight,
+                    child: Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                  ),
+
+                  Flexible(
+                    flex: 6,fit: FlexFit.tight,
+                    child: Text(effectiveness, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                  ),
+                ],
+              )),
+          SizedBox(height: marginSizeXS,),
           Wrap(
             alignment: WrapAlignment.start,spacing: marginSizeXS,runSpacing: marginSizeXS,
             children: [
-              for (PokemonTypes pokemonType in weakTypes)
+              for (PokemonTypes pokemonType in types)
                 TypeTextBox(pokemonType)
-              ],),
-          SizedBox(height: marginSizeM,),
+            ],),
+          SizedBox(height: 24,),
 
         ],
 
@@ -397,6 +429,8 @@ class _PokemonInfoState extends State<PokemonInfo> {
       ),
     );
   }
+
+
   Widget moveContents(){
     return Container(
       child: Column(
@@ -440,23 +474,16 @@ class _PokemonInfoState extends State<PokemonInfo> {
       ),
     );
   }
-
-  Widget evolutionContents(){
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          evolutionPokemonCard(),
-          SizedBox(height: marginSizeXS,),
-
-        ],
-
-
-      ),
+  Widget formContents(){
+    return Column(
+      children: [
+        SizedBox(width: marginSizeM,),
+        evolutionContents()
+      ],
     );
   }
 
-  Widget evolutionPokemonCard(){
+  Widget evolutionContents(){
 
     List<String>? evolutionPokemonList = widget.pokemon!.evolutions;
     if(evolutionPokemonList!.length == 0){
@@ -464,6 +491,7 @@ class _PokemonInfoState extends State<PokemonInfo> {
     }
 
     return ListView.builder(
+      padding: EdgeInsets.all(0),
       shrinkWrap: true,physics: NeverScrollableScrollPhysics(),
       itemCount: evolutionPokemonList.length,
       itemBuilder: (context, index){
@@ -472,20 +500,31 @@ class _PokemonInfoState extends State<PokemonInfo> {
           margin: EdgeInsets.only(bottom: marginSizeM),
           height: 100,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CachedNetworkImage(
+
                 imageUrl: pokemon!.imageUrl,
                 width: 100, height: 100,
               ),
               SizedBox(width: marginSizeM,),
-              Flexible(
+              Expanded(
 
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                    Text(pokemon.id, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                  ],
+                child: Container(
+                  height: 100,
+                  //color: AppColors.backgroundColorLightGrey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(child: Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),flex: 2,),
+                          Expanded(child: Text(pokemon.id, style: getRegularKrFont(AppColors.fontColorGrey, FontSizes.paragraph),), flex: 1),
+                        ],
+                      ),
+                      Text("16레벨에 진화", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                    ],
+                  ),
                 ),
               ),
 

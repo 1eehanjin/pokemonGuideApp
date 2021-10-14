@@ -39,6 +39,8 @@ dependencies:
   shadowed_image: ^1.0.3
   simple_shadow: ^0.2.0
   modal_bottom_sheet: ^2.0.0
+  fl_chart: ^0.40.0
+  flutter_radar_chart: ^0.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

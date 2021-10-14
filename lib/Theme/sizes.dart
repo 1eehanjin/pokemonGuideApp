@@ -19,3 +19,4 @@ double marginSizeColorBlock = 35;
 double marginSizeXS = 6;
 double marginSizeS = 12;
 double marginSizeM = 16;
+double marginSizeL = 24;

@@ -8,7 +8,7 @@ class TypeColors {
   static const Color black = Color(0xFF3C2D23);
   static const Color blue = Color(0xFF0267C2);
   static const Color darkBrown = Color(0xFFB8A038);
-  static const Color grey = Color(0x6D8F9C);
+  static const Color grey = Color(0xFF6D8F9C);
   static const Color teal = Color(0xFF373A3C);
   static const Color lightBrown = Color(0xFFE0c068);
   static const Color lightCyan = Color(0xFF65A5A5);
@@ -22,7 +22,7 @@ class TypeColors {
   static const Color pink = Color(0xFFF09AD9);
   static const Color purple = Color(0xFF454593);
   static const Color red = Color(0xFFC03028);
-  static const Color violet = Color(0xD07038F8);
+  static const Color violet = Color(0xFF7038F8);
 }
 
 
