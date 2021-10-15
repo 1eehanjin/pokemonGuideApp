@@ -74,7 +74,7 @@ class _ItemInfoState extends State<ItemInfo> {
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
               title: Text(widget.item!.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2)),
-                background: Container(
+                background: Center(
                 child: Hero(
                   tag: widget.item!.name,
                   child: SizedBox(
