@@ -44,6 +44,7 @@ class TypeTextBox extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
+
       child: Text(type.value, style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
       padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(

@@ -432,37 +432,205 @@ class _PokemonInfoState extends State<PokemonInfo> {
 
 
   Widget moveContents(){
+    String? _chosenValue = '1세대: 레드/블루/그린';
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Wrap(spacing: marginSizeS,
-            children: [
-            ChoiceChip(label: Text("1세대"), selected: true,),ChoiceChip(label: Text("2세대"), selected: false),ChoiceChip(label: Text("3세대"), selected: false),ChoiceChip(label: Text("4세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),ChoiceChip(label: Text("1세대"), selected: false),
-          ],),
-        SizedBox(height: marginSizeM,),
-          Text("1세대 : 레드, 블루, 그린", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.h4)),
           SizedBox(height: marginSizeM,),
-        Text("레벨업으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
+
+          GestureDetector(
+            child: Container(
+              width: double.infinity,
+
+              height: 60,alignment: Alignment.center,
+              decoration: BoxDecoration(
+                //color: AppColors.backgroundColorLightGrey,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: Colors.blue
+                )
+              ),
+              child: Text("1세대: 레드/블루/그린", style: getBoldKrFont(Colors.blue, FontSizes.h4) ),
+            ),
+
+          ),
+          SizedBox(height: marginSizeL,),
+          Text("레벨업으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
           SizedBox(height: marginSizeS,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Flexible(child: Text("4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(child: Container(
-                alignment: Alignment.centerLeft,
-                  child: Chip(label: Text("몸통박치기",  style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)))), flex: 4,fit: FlexFit.tight, ),
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Container(
+                width: double.infinity,
+                  child: Row(
+                    
+                    children: [
+                      SizedBox(width: 60,),
+                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
+                      TypeTextBox(PokemonTypes.electric),
+                      SizedBox(width: marginSizeM,),
+                    ],
+                  ),
+                height: 50,alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  //color: AppColors.backgroundColorLightGrey,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                        color: Colors.grey
+                    )
+                ),
+                ),
+              )
             ],
           ),
+          SizedBox(height: marginSizeM,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Flexible(child: Text("4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: Chip(label: Text("몸통박치기",  style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)))), flex: 4,fit: FlexFit.tight, ),
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  child: Row(
+
+                    children: [
+                      SizedBox(width: marginSizeS,),
+                      TypeTextBox(PokemonTypes.electric),
+                      SizedBox(width: 60,),
+                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
+
+                      SizedBox(width: marginSizeM,),
+                    ],
+                  ),
+                  height: 50,alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    //color: AppColors.backgroundColorLightGrey,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Colors.grey
+                      )
+                  ),
+                ),
+              )
             ],
           ),
+          SizedBox(height: marginSizeM,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Stack(
+                  children: [
+
+                    Container(
+                      width: double.infinity,margin: EdgeInsets.only(left: 2, top: 2),
+                      child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4)),
+                      height: 50,alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        //color: AppColors.backgroundColorLightGrey,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              color: Colors.grey
+                          )
+                      ),
+                    ),
+                    Positioned(child: TypeTextBox(PokemonTypes.electric), top: 0,left: 0,),
+                  ],
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  child: Row(
+
+                    children: [
+                      SizedBox(width: 60,),
+                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
+                      SizedBox(width: marginSizeM,),
+                      Container(
+                        decoration: BoxDecoration(color: TypeColors.lightYellow, borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))),
+
+                          height: 50, width: 70, alignment: Alignment.center, child: Text("Electric", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),),
+                    ],
+                  ),
+                  height: 50,alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    //color: AppColors.backgroundColorLightGrey,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                          color: Colors.grey
+                      )
+                  ),
+                ),
+              ),
+
+
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  child: Center(child: Text("10만볼트", style: getBoldKrFont(TypeColors.lightYellow, FontSizes.h4))),
+                  height: 50,alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    //color: AppColors.backgroundColorLightGrey,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                          color: TypeColors.lightYellow
+                      )
+                  ),
+                ),
+              ),
+
+
+            ],
+          ),
+          SizedBox(height: marginSizeM,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
+              Flexible(
+                fit: FlexFit.tight,flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  child: Center(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.h4))),
+
+                  height: 50,alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: TypeColors.lightYellow,
+                      borderRadius: BorderRadius.circular(12),
+
+                  ),
+                ),
+              ),
+
+
+            ],
+          ),
+
           SizedBox(height: marginSizeM,),
           Text("기술/비전머신으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
           SizedBox(height: marginSizeXS,),
