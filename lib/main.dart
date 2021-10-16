@@ -8,6 +8,7 @@ import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
 import 'package:pokemon_guides_app/Pages/PokemonListView.dart';
 import 'package:pokemon_guides_app/Pages/item_list_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/images.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/textStyles.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -84,12 +85,15 @@ class MyHomePage extends StatelessWidget {
                             spacing: marginSizeM,
                             runSpacing: marginSizeM,
                             children: [
-                              GuideElementButton("포켓몬", PokemonListView()),
-                              GuideElementButton("기술", PokemonListView()),
-                              GuideElementButton("아이템", ItemListView()),
-                              GuideElementButton("속성", PokemonListView()),
-                              GuideElementButton("지도", PokemonListView()),
-                              GuideElementButton("내 정보", PokemonListView()),
+                              GuideElementButton("포켓몬", PokemonListView(), AppImages.pokemonsButton),
+                              GuideElementButton("기술", PokemonListView(), Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: AppImages.movesButton,
+                              )),
+                              GuideElementButton("아이템", ItemListView(), AppImages.itemsButton),
+                              GuideElementButton("속성", PokemonListView(), AppImages.pokemonsButton),
+                              GuideElementButton("지도", PokemonListView(), AppImages.pokemonsButton),
+                              GuideElementButton("내 정보", PokemonListView(), AppImages.pokemonsButton),
                             ],
                           ),
                         ),
@@ -107,7 +111,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Widget GuideElementButton(String title, Widget page){
+  Widget GuideElementButton(String title, Widget page, Widget image){
     return MaterialButton(
       onPressed: (){
         Get.to(page, transition: Transition.fadeIn);
@@ -126,8 +130,8 @@ class MyHomePage extends StatelessWidget {
             ),
             width: 80,height: 80,
               padding: EdgeInsets.all(10),
-              child: Image.asset("assets/images/pika.png"),
-            alignment: Alignment.center,
+              child: image,
+
           ),
           SizedBox(height: marginSizeXS,),
           Text(title, style: getRegularKrFont(AppColors.fontColorGrey, FontSizes.h2),)

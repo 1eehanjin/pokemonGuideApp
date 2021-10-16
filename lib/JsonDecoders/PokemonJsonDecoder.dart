@@ -13,7 +13,7 @@ class DataSource {
 
   Future<List<PokemonModel>> getPokemons() async {
     final String jsonString = await rootBundle.loadString('assets/datas/pokemons.json');
-    print(jsonString);
+
     final jsonResponse = json.decode(jsonString);
     final data = (jsonResponse as List)
         .map((item) => PokemonModel.fromJson(item))
@@ -23,7 +23,6 @@ class DataSource {
 
   Future<List<ItemModel>> getItems() async {
     final String jsonString = await rootBundle.loadString('assets/datas/items.json');
-    print(jsonString);
     final jsonResponse = json.decode(jsonString);
     final itemData = (jsonResponse as List)
         .map((item) => ItemModel.fromJson(item))
