@@ -47,7 +47,7 @@ class ItemCard extends StatelessWidget {
             Expanded(
 
                 child: Container(
-                  padding: EdgeInsets.only(left: marginSizeS, right: marginSizeS, bottom: marginSizeM),
+                  padding: EdgeInsets.only(left: MarginSizes.s, right: MarginSizes.s, bottom: MarginSizes.m),
                     alignment: Alignment.center,
                     child: Text(item.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),textAlign: TextAlign.center,))),
           ],

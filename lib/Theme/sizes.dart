@@ -11,12 +11,14 @@ class FontSizes{
 
 
 
+class MarginSizes{
+  static const double side = 24;
+  static const double block = 40;
+  static const double colorBlock = 35;
 
-double marginSizeSide = 24;
-double marginSizeBlock = 40;
-double marginSizeColorBlock = 35;
+  static const double xs = 6;
+  static const double s = 12;
+  static const double m = 16;
+  static const double l = 24;
+}
 
-double marginSizeXS = 6;
-double marginSizeS = 12;
-double marginSizeM = 16;
-double marginSizeL = 24;

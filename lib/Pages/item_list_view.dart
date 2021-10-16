@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokemon_guides_app/Components/MyHomePage/GlobalSearchBar.dart';
+import 'package:pokemon_guides_app/Components/MyHomePage/global_search_bar.dart';
 import 'package:pokemon_guides_app/Components/Common/type_image.dart';
 import 'package:pokemon_guides_app/Components/Common/item_card.dart';
 import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
@@ -29,7 +29,7 @@ class ItemListView extends StatelessWidget {
           SizedBox(height:24),
           Expanded(
             child: GridView.builder(
-                padding: EdgeInsets.only(left: marginSizeSide-5, right: marginSizeSide-5),
+                padding: EdgeInsets.only(left: MarginSizes.side-5, right: MarginSizes.side-5),
                 shrinkWrap: true,
                 itemCount: Data.itemList!.length,
                 gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(

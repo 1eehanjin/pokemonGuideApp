@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/edge_insets.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 
 class GlobalSearchBar extends StatefulWidget {
@@ -14,6 +15,7 @@ class _GlobalSearchBarState extends State<GlobalSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: AppEdgeInsets.sideEdgeInsets,
       decoration: BoxDecoration(
         color: AppColors.backgroundColorWhite,
         borderRadius: BorderRadius.circular(10),

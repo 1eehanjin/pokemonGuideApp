@@ -96,7 +96,7 @@ class _ItemInfoState extends State<ItemInfo> {
                 margin: EdgeInsets.only(left: 24, right: 24),
                 child: Column(
                   children: [
-                    SizedBox(height: marginSizeBlock,),
+                    SizedBox(height: MarginSizes.block,),
                     Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
@@ -106,15 +106,15 @@ class _ItemInfoState extends State<ItemInfo> {
                         padding: EdgeInsets.only(left: 24, right: 24),
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: marginSizeM),
+                            SizedBox(height: MarginSizes.m),
                             Text("Category", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                            SizedBox(height: marginSizeXS),
+                            SizedBox(height: MarginSizes.xs),
                             Text(widget.item!.category, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                            SizedBox(height: marginSizeBlock),
+                            SizedBox(height: MarginSizes.block),
                             Text("Effect", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                            SizedBox(height: marginSizeXS),
+                            SizedBox(height: MarginSizes.xs),
                             Text(widget.item!.effect, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                            SizedBox(height: marginSizeBlock),
+                            SizedBox(height: MarginSizes.block),
 
                           ],
                         )

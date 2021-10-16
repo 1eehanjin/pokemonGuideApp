@@ -8,7 +8,7 @@ class TrainerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(bottom:20, left: marginSizeSide, right: marginSizeSide),
+        margin: EdgeInsets.only(bottom:20, left: MarginSizes.side, right: MarginSizes.side),
         decoration: BoxDecoration(
             color: AppColors.brandColor,
             borderRadius: BorderRadius.circular(10),

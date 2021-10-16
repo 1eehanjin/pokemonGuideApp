@@ -97,7 +97,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                 padding: EdgeInsets.only(left: 24, right: 24),
                                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: marginSizeM,),
+                                    SizedBox(height: MarginSizes.m,),
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -106,25 +106,25 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Type", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Abilities", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Species", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Height", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Weight", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("Gender", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("base EXP", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("egg groups", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text("egg cycles", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                             ],
                                           ),
                                         ),
@@ -133,15 +133,15 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Row(
                                                   children: [
                                                     TypeTextBox(PokemonTypesX.parse(pokemon!.types![0]) ),
-                                                    SizedBox(width: marginSizeXS,),
+                                                    SizedBox(width: MarginSizes.xs,),
                                                     pokemon!.types!.length > 1 ?TypeTextBox(PokemonTypesX.parse(pokemon!.types![1]) ) : Container()
                                                   ]
                                               ),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               RichText(
                                                 text: TextSpan(
                                                     text: pokemon!.abilities![0],
@@ -173,26 +173,26 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                                                         child: Column(
                                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                                           children: [
-                                                                            SizedBox(height: marginSizeBlock,),
+                                                                            SizedBox(height: MarginSizes.block,),
                                                                             Padding(
-                                                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide, top: marginSizeM),
+                                                                              padding: EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side, top: MarginSizes.m),
                                                                               child: Text(pokemon!.abilities![0], style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h1),),
                                                                             ),
-                                                                            SizedBox(height: marginSizeM,),
+                                                                            SizedBox(height: MarginSizes.m,),
                                                                             Padding(
-                                                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
+                                                                              padding: EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side),
                                                                               child: Text("HP가 1/3 이하일 때 풀 타입 기술의 위력이 1.5배가 된다.", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                                                                             ),
-                                                                            SizedBox(height: marginSizeBlock,),
+                                                                            SizedBox(height: MarginSizes.block,),
                                                                             Padding(
-                                                                              padding: EdgeInsets.only(left: marginSizeSide, right: marginSizeSide),
+                                                                              padding: EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side),
                                                                               child: Text("이 특성을 가진 포켓몬", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h3),),
                                                                             ),
-                                                                            SizedBox(height: marginSizeM,),
+                                                                            SizedBox(height: MarginSizes.m,),
                                                                             GridView.builder(
 
 
-                                                                              padding: EdgeInsets.only(left: marginSizeSide-5, right: marginSizeSide-5),
+                                                                              padding: EdgeInsets.only(left: MarginSizes.side-5, right: MarginSizes.side-5),
                                                                               physics: NeverScrollableScrollPhysics(),
                                                                               shrinkWrap: true,
                                                                               itemCount: 10,
@@ -229,21 +229,21 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                                       }),
                                               ),
 
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.category, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.height, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.weight, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.genderFemalePercentage, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.baseExp, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.eggGroups, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
                                               Text(pokemon!.cycles, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-                                              SizedBox(height: marginSizeM),
+                                              SizedBox(height: MarginSizes.m),
 
                                             ],
                                           ),
@@ -254,19 +254,19 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                   ],
                                 )
                             ),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("능력치"), contentsWidget: statusContents(),),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("방어 상성"), contentsWidget: typeContents(),),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: moveContents(),),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: formContents(),),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("도감별 설명"), contentsWidget: regionalContents(),),
-                            SizedBox(height: marginSizeM,),
+                            SizedBox(height: MarginSizes.m,),
                             PokemonInfoCard(titleWidget:  pokemonInfoTitle("출현 장소"), contentsWidget: locationContents(),),
-                            SizedBox(height: marginSizeBlock,),
+                            SizedBox(height: MarginSizes.block,),
                           ],
                         ),
                       ),
@@ -303,7 +303,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 12, right: 12, bottom: marginSizeBlock),
+            padding: EdgeInsets.only(left: 12, right: 12, bottom: MarginSizes.block),
             child: AspectRatio(
                 aspectRatio: 1,
                 child: RadarChart(outlineColor: Colors.white,
@@ -402,9 +402,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                   ),
                 ],
               )),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Wrap(
-            alignment: WrapAlignment.start,spacing: marginSizeXS,runSpacing: marginSizeXS,
+            alignment: WrapAlignment.start,spacing: MarginSizes.xs,runSpacing: MarginSizes.xs,
             children: [
               for (PokemonTypes pokemonType in types)
                 TypeTextBox(pokemonType)
@@ -425,7 +425,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
 
           GestureDetector(
             child: Container(
@@ -443,9 +443,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
             ),
 
           ),
-          SizedBox(height: marginSizeL,),
+          SizedBox(height: MarginSizes.l,),
           Text("레벨업으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
-          SizedBox(height: marginSizeS,),
+          SizedBox(height: MarginSizes.s,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -460,7 +460,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                       SizedBox(width: 60,),
                       Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
                       TypeTextBox(PokemonTypes.electric),
-                      SizedBox(width: marginSizeM,),
+                      SizedBox(width: MarginSizes.m,),
                     ],
                   ),
                   height: 50,alignment: Alignment.center,
@@ -475,7 +475,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               )
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -487,12 +487,12 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                   child: Row(
 
                     children: [
-                      SizedBox(width: marginSizeS,),
+                      SizedBox(width: MarginSizes.s,),
                       TypeTextBox(PokemonTypes.electric),
                       SizedBox(width: 60,),
                       Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
 
-                      SizedBox(width: marginSizeM,),
+                      SizedBox(width: MarginSizes.m,),
                     ],
                   ),
                   height: 50,alignment: Alignment.center,
@@ -507,7 +507,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               )
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -535,7 +535,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               )
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -549,7 +549,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                     children: [
                       SizedBox(width: 60,),
                       Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
-                      SizedBox(width: marginSizeM,),
+                      SizedBox(width: MarginSizes.m,),
                       Container(
                         decoration: BoxDecoration(color: TypeColors.lightYellow, borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))),
 
@@ -570,7 +570,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
 
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -594,7 +594,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
 
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -618,9 +618,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
             ],
           ),
 
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Text("기술/비전머신으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -648,7 +648,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               )
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
         ],
 
 
@@ -659,7 +659,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
   Widget formContents(){
     return Column(
       children: [
-        SizedBox(width: marginSizeM,),
+        SizedBox(width: MarginSizes.m,),
         evolutionContents()
       ],
     );
@@ -679,7 +679,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
       itemBuilder: (context, index){
         PokemonModel? pokemon = Data.pokemonMap[evolutionPokemonList[index]];
         return Container(
-          margin: EdgeInsets.only(bottom: marginSizeM),
+          margin: EdgeInsets.only(bottom: MarginSizes.m),
           height: 100,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -689,7 +689,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                 imageUrl: pokemon!.imageUrl,
                 width: 100, height: 100,
               ),
-              SizedBox(width: marginSizeM,),
+              SizedBox(width: MarginSizes.m,),
               Expanded(
 
                 child: Container(
@@ -740,9 +740,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text(pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -757,9 +757,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text(pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -774,9 +774,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text(pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -791,9 +791,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text(pokemon!.xDescription, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
         ],
 
 
@@ -807,7 +807,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("1세대", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -822,7 +822,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -837,18 +837,18 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               ),
             ],
           ),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Text("2세대", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
-          SizedBox(height: marginSizeS,),
+          SizedBox(height: MarginSizes.s,),
           Text("금", style: getBoldKrFont(Colors.amber, FontSizes.paragraph)),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
           Text("은", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.paragraph)),
-          SizedBox(height: marginSizeXS,),
+          SizedBox(height: MarginSizes.xs,),
           Text("2번도로, 30번도로, 31번도로, 너도밤나무숲, 자연공원아침, 자연공원 (곤충채집 대회), 고동마을, 너도밤나무숲, 분노의 호수, 26번도로, 27번도로, 34번도로, 35번도로, 36번도로, 37번도로, 38번도로, 39번도로 (박치기)", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
 
-          SizedBox(height: marginSizeM,),
+          SizedBox(height: MarginSizes.m,),
         ],
 
 

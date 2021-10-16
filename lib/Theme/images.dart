@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppImages{
-  static final pokemonsButton = Image.asset("assets/images/homepage/bulbasaur.png", fit: BoxFit.cover,width: 80, height: 80,);
-  static final itemsButton =    Image.asset("assets/images/homepage/pokeball.png", fit: BoxFit.cover,width: 80, height: 80,);
-  static final movesButton =    Image.asset("assets/images/homepage/HM.png", fit: BoxFit.cover,width: 80, height: 80,);
+  static final pokemonsButton =
+  Image.asset("assets/images/homepage/bulbasaur.png",
+    fit: BoxFit.cover,);
+  static final itemsButton =
+  Image.asset("assets/images/homepage/pokeball.png",
+    fit: BoxFit.cover,);
+  static final movesButton =
+  Image.asset("assets/images/homepage/TM.png",
+    fit: BoxFit.cover,);
+
 }
 
 class TypeImages{
