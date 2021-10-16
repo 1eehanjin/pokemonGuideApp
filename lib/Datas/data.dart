@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
-import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
+import 'package:pokemon_guides_app/JsonDecoders/data_json_decoder.dart';
 import 'package:pokemon_guides_app/JsonDecoders/item_model.dart';
 
 class Data{

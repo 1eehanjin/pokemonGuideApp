@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 class PokemonBaseStats extends StatefulWidget {

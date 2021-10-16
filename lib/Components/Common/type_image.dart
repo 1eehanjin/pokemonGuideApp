@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_guides_app/Datas/PokemonTypes.dart';
+import 'package:pokemon_guides_app/Datas/pokemon_type.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/images.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
-import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 
 class TypeImage extends StatelessWidget {
   TypeImage(this.typeName);

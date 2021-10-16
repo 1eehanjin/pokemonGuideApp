@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
-import 'package:pokemon_guides_app/Pages/PokemonDetailView.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
+import 'package:pokemon_guides_app/Pages/pokemon_detail_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
-import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 
-import 'TypeImage.dart';
+import 'type_image.dart';
 
 class PokemonCard extends StatelessWidget {
   PokemonCard({Key? key, required this.pokemon}) : super(key: key);

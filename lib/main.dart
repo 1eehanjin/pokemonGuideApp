@@ -1,23 +1,22 @@
 import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokemon_guides_app/Components/MyAppBar/AppTitleText.dart';
-import 'package:pokemon_guides_app/Datas/Data.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
-import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
-import 'package:pokemon_guides_app/Pages/PokemonListView.dart';
+import 'package:pokemon_guides_app/Components/MyAppBar/app_title.dart';
+import 'package:pokemon_guides_app/Datas/data.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
+import 'package:pokemon_guides_app/JsonDecoders/data_json_decoder.dart';
+import 'package:pokemon_guides_app/Pages/pokemon_list_view.dart';
 import 'package:pokemon_guides_app/Pages/item_list_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/images.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
-import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import 'Components/Common/GlobalSearchBar.dart';
-import 'Components/Common/TrainerCard.dart';
-import 'Components/MyHomePage/TitleText.dart';
+import 'Components/MyHomePage/GlobalSearchBar.dart';
+import 'Components/Common/trainer_card.dart';
 import 'Theme/shadows.dart';
 
 

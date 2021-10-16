@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokemon_guides_app/Components/Common/GlobalSearchBar.dart';
-import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
+import 'package:pokemon_guides_app/Components/MyHomePage/GlobalSearchBar.dart';
+import 'package:pokemon_guides_app/Components/Common/type_image.dart';
 import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
-import 'package:pokemon_guides_app/Datas/Data.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
-import 'package:pokemon_guides_app/JsonDecoders/PokemonJsonDecoder.dart';
-import 'package:pokemon_guides_app/Pages/PokemonDetailView.dart';
+import 'package:pokemon_guides_app/Datas/data.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
+import 'package:pokemon_guides_app/JsonDecoders/data_json_decoder.dart';
+import 'package:pokemon_guides_app/Pages/pokemon_detail_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
-import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 
 class PokemonListView extends StatelessWidget {
   @override

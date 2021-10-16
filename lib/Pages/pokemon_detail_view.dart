@@ -9,23 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:get/get.dart';
-import 'package:pokemon_guides_app/Components/Common/TypeImage.dart';
+import 'package:pokemon_guides_app/Components/Common/type_image.dart';
 import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
 import 'package:pokemon_guides_app/Components/Common/stats_bar_chart.dart';
-import 'package:pokemon_guides_app/Datas/Data.dart';
-import 'package:pokemon_guides_app/Datas/PokemonType.dart';
-import 'package:pokemon_guides_app/Datas/PokemonTypes.dart';
-import 'package:pokemon_guides_app/JsonDecoders/JsonPokemonModel.dart';
+import 'package:pokemon_guides_app/Datas/data.dart';
+import 'package:pokemon_guides_app/Datas/pokemon_type.dart';
+import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
-import 'package:pokemon_guides_app/Theme/textStyles.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 import 'package:shadowed_image/shadowed_image.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import 'PokemonListView.dart';
+import 'pokemon_list_view.dart';
 
 
 class PokemonDetailView extends StatefulWidget {

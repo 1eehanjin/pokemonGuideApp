@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:pokemon_guides_app/Datas/Data.dart';
-
-import 'JsonPokemonModel.dart';
+import 'pokemon_model.dart';
 import 'item_model.dart';
 
 
