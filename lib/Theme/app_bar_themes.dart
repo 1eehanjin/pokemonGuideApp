@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 
 import 'color.dart';
 
 class AppBarThemes {
 
-  static const AppBarTheme appBarThemeLight = AppBarTheme(
+  static AppBarTheme appBarThemeLight = AppBarTheme(
     centerTitle: false,
     backgroundColor: AppColors.backgroundColorLight,
     foregroundColor: AppColors.fontColorBlack,
     elevation: 0,
     iconTheme: IconThemeData(color: AppColors.fontColorBlack),
-
+    textTheme: TextTheme(
+      headline6: getBoldKrFont(AppColors.fontColorBlack, 20),
+    )
   );
 
 

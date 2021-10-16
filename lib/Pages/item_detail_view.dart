@@ -12,6 +12,7 @@ import 'package:pokemon_guides_app/Components/Common/pokemon_card.dart';
 import 'package:pokemon_guides_app/Datas/data.dart';
 import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/JsonDecoders/item_model.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -98,11 +99,7 @@ class _ItemInfoState extends State<ItemInfo> {
                   children: [
                     SizedBox(height: MarginSizes.block,),
                     Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [Shadows.whiteBackgroundShadow],
-                            color: AppColors.backgroundColorWhite
-                        ),
+                        decoration: BoxDecorations.lightCard,
                         padding: EdgeInsets.only(left: 24, right: 24),
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

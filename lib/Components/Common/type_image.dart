@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_guides_app/Datas/pokemon_type.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/images.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -47,10 +48,7 @@ class TypeTextBox extends StatelessWidget {
 
       child: Text(type.value, style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),
       padding: EdgeInsets.only(left: 10, right: 10),
-      decoration: BoxDecoration(
-        color: typeColor(type),
-        borderRadius: BorderRadius.circular(5),
-      ),
+      decoration: BoxDecorations.lightCard,
     );
   }
 

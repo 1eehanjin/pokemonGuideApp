@@ -15,7 +15,9 @@ import 'package:pokemon_guides_app/Components/Common/stats_bar_chart.dart';
 import 'package:pokemon_guides_app/Datas/data.dart';
 import 'package:pokemon_guides_app/Datas/pokemon_type.dart';
 import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/edge_insets.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/text_styles.dart';
@@ -89,11 +91,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    boxShadow: [Shadows.whiteBackgroundShadow],
-                                    color: AppColors.backgroundColorWhite
-                                ),
+                                decoration: BoxDecorations.lightCard,
                                 padding: EdgeInsets.only(left: 24, right: 24),
                                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -156,12 +154,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
 
                                                                 builder: (_, controller) {
                                                                   return Container(
-                                                                    decoration: BoxDecoration(
-                                                                        color: AppColors.backgroundColorWhite,
-                                                                        borderRadius: BorderRadius.only(
-
-                                                                            topRight: Radius.circular(15), topLeft: Radius.circular(15)
-                                                                        )),
+                                                                    decoration: BoxDecorations.lightCard,
                                                                     child: SingleChildScrollView(
 
                                                                       controller: controller,
@@ -464,13 +457,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                     ],
                   ),
                   height: 50,alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    //color: AppColors.backgroundColorLightGrey,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          color: Colors.grey
-                      )
-                  ),
+                  decoration: BoxDecorations.lightCard,
                 ),
               )
             ],
@@ -887,11 +874,8 @@ class _PokemonInfoCardState extends State<PokemonInfoCard> {
         });
       },
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [Shadows.whiteBackgroundShadow],
-            color: AppColors.backgroundColorWhite
-        ),padding: EdgeInsets.only(left: 24, right: 24),
+        decoration: BoxDecorations.lightCard,
+        padding: AppEdgeInsets.sideEdgeInsets,
         child: AnimatedCrossFade(firstChild: widget.titleWidget,
             secondChild: Column(
               children: [

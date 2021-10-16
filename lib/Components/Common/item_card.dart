@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/JsonDecoders/item_model.dart';
+import 'package:pokemon_guides_app/Pages/item_detail_view.dart';
 import 'package:pokemon_guides_app/Pages/pokemon_detail_view.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -18,40 +20,33 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(left: 5, right: 5, top: 10),
-        decoration: BoxDecoration(
-
-            boxShadow: [
-              Shadows.whiteBackgroundShadow
-            ]
-            ,
-            borderRadius: BorderRadius.circular(15),
-
-
-            color: AppColors.backgroundColorWhite
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,mainAxisSize: MainAxisSize.max,
-          children: [
-            AspectRatio(
-                aspectRatio: 1.3,
-                child: Hero(
-                    tag: item.name,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: CachedNetworkImage(imageUrl: item.imageUrl, fit:BoxFit.cover),
-                    )
-                )
-            ),
-            Expanded(
-
-                child: Container(
-                  padding: EdgeInsets.only(left: MarginSizes.s, right: MarginSizes.s, bottom: MarginSizes.m),
-                    alignment: Alignment.center,
-                    child: Text(item.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),textAlign: TextAlign.center,))),
-          ],
-        )
+    return GestureDetector(
+      onTap: (){
+        Get.to(ItemDetailView(), arguments: item, transition: Transition.fade);
+      },
+      child: Container(
+          decoration: BoxDecorations.lightCard,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,mainAxisSize: MainAxisSize.max,
+            children: [
+              AspectRatio(
+                  aspectRatio: 1.3,
+                  child: Hero(
+                      tag: item.name,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: CachedNetworkImage(imageUrl: item.imageUrl, fit:BoxFit.contain),
+                      )
+                  )
+              ),
+              Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: MarginSizes.s, right: MarginSizes.s, bottom: MarginSizes.m),
+                      alignment: Alignment.center,
+                      child: Text(item.name, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),textAlign: TextAlign.center,))),
+            ],
+          )
+      ),
     );
   }
 

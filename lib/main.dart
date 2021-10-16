@@ -37,10 +37,10 @@ class MyHomePage extends StatelessWidget {
 
         children: [
 
-          SizedBox(height: MarginSizes.block * 3),
+          SizedBox(height: MarginSizes.block * 4),
 
           Titles.h1("Pokemon Life"),
-          SizedBox(height: MarginSizes.block,),
+          SizedBox(height: MarginSizes.block ,),
 
           GlobalSearchBar(),
           SizedBox(height: MarginSizes.block),

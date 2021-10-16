@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
@@ -23,13 +24,7 @@ class GuideElementButton extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    Shadows.whiteBackgroundShadow
-                  ],
-                  borderRadius: BorderRadius.circular(15),
-                  color: AppColors.backgroundColorWhite
-              ),
+              decoration: BoxDecorations.lightCard,
               child: image,
               padding: EdgeInsets.all(10),
             ),

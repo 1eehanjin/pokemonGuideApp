@@ -10,6 +10,7 @@ import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/JsonDecoders/data_json_decoder.dart';
 import 'package:pokemon_guides_app/Pages/pokemon_detail_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/edge_insets.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/text_styles.dart';
@@ -22,32 +23,25 @@ class ItemListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Items",style: getBoldKrFont(AppColors.fontColorBlack, 20),),
+        title: Text("Items"),
       ),
       body: Column(
         children: [
-          SizedBox(height:24),
           Expanded(
             child: GridView.builder(
-                padding: EdgeInsets.only(left: MarginSizes.side-5, right: MarginSizes.side-5),
-                shrinkWrap: true,
-                itemCount: Data.itemList!.length,
-                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-
-                  crossAxisCount: 3,
-                  childAspectRatio: 3/4,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(child: ItemCard(item: Data.itemList![index]),
-                    onTap: (){
-                      Get.to(ItemDetailView(), arguments: Data.itemList![index], transition: Transition.fade);
-                    },
-
-                  );
-                },
+              padding: AppEdgeInsets.listEdgeInsets,
+              shrinkWrap: true,
+              itemCount: Data.itemList!.length,
+              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: MarginSizes.m,mainAxisSpacing: MarginSizes.m,
+                crossAxisCount: 3, //TODO: 적응형으로 갯수 늘리기
+                childAspectRatio: 3/4,
               ),
-              )
-
+              itemBuilder: (BuildContext context, int index) {
+                return ItemCard(item: Data.itemList![index]);
+              },
+            ),
+          )
         ],
       ),
     );

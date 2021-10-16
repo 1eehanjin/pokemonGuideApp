@@ -9,6 +9,7 @@ import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/JsonDecoders/data_json_decoder.dart';
 import 'package:pokemon_guides_app/Pages/pokemon_detail_view.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
+import 'package:pokemon_guides_app/Theme/edge_insets.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 import 'package:pokemon_guides_app/Theme/text_styles.dart';
@@ -19,32 +20,26 @@ class PokemonListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pokedex",style: getBoldKrFont(AppColors.fontColorBlack, 20),),
+        title: Text("Pokedex",),
       ),
+
       body: Column(
         children: [
-          SizedBox(height:24),
           Expanded(
             child: GridView.builder(
-                padding: EdgeInsets.only(left: MarginSizes.side-5, right: MarginSizes.side-5),
+                padding: AppEdgeInsets.listEdgeInsets,
                 shrinkWrap: true,
                 itemCount: Data.pokemonList!.length,
                 gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-
-                  crossAxisCount: 2,
+                  crossAxisSpacing: MarginSizes.m,mainAxisSpacing: MarginSizes.m,
+                  crossAxisCount: 2, //TODO: 적응형으로 화면 너비에 따라 갯수 늘리기
                   childAspectRatio: 18/14,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(child: PokemonCard(pokemon: Data.pokemonList![index]),
-                    onTap: (){
-                      Get.to(PokemonDetailView(), arguments: Data.pokemonList![index], transition: Transition.fade);
-                    },
-
-                  );
+                  return PokemonCard(pokemon: Data.pokemonList![index]);
                 },
               ),
-              )
-
+          )
         ],
       ),
     );

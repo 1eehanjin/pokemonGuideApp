@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:pokemon_guides_app/Theme/box_decoration.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/edge_insets.dart';
 import 'package:pokemon_guides_app/Theme/shadows.dart';
@@ -16,13 +17,7 @@ class _GlobalSearchBarState extends State<GlobalSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       margin: AppEdgeInsets.sideEdgeInsets,
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColorWhite,
-        borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            Shadows.whiteBackgroundShadow
-          ]
-      ),
+      decoration: BoxDecorations.lightCard,
       
       alignment: Alignment.center,
       child: Padding(
