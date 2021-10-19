@@ -14,7 +14,7 @@ import 'type_image.dart';
 class PokemonCard extends StatelessWidget {
   PokemonCard({Key? key, required this.pokemon}) : super(key: key);
   PokemonModel pokemon;
-
+  //TODO: 디자인 수
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,19 +38,7 @@ class PokemonCard extends StatelessWidget {
                   )
               ),
               Positioned(child: Text(pokemon.name, style: getBoldKrFont(AppColors.fontColorBlack, 16),), left: 20, bottom: 16,),
-              Positioned(child: Row(
-                  children: [
-                    Container(
-                        height: 20, width: 20,
-                        child: TypeImage(pokemon.types![0])
-                    ),
-                    Container(
-                        height: 20, width: 20,
-                        child: pokemon.types!.length > 1 ?TypeImage(pokemon.types![1]) : Container()
-                    )
-                  ]
-              ), left: 20, bottom: 50,
-              ),
+              //TODO: 정보 추가(타입 등)
             ],
           )
       ),

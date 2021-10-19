@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pokemon_guides_app/Datas/pokemon_type.dart';
 
 @JsonSerializable()
 class PokemonModel {
@@ -62,7 +63,7 @@ class PokemonModel {
   final String weight;
 
   @JsonKey(name: 'typeofpokemon', disallowNullValue: true)
-  final List<String>? types;
+  final List<PokemonTypes>? types;
 
   @JsonKey(defaultValue: [])
   final List<String>? weaknesses;
@@ -150,7 +151,7 @@ PokemonModel _$PokemonModelFromJson(Map<String, dynamic> json) {
     (json['height']?? '') as String,
     (json['category'] ?? '') as String,
     (json['weight'] ?? '') as String,
-    (json['typeofpokemon'] as List).map((e) => e as String).toList(),
+    (json['typeofpokemon'] as List).map((e) => PokemonTypesX.parse(e as String)).toList(),
     (json['weaknesses'] as List).map((e) => e as String).toList(),
     (json['evolutions'] as List).map((e) => e as String).toList(),
     (json['abilities'] as List).map((e) => e as String).toList(),

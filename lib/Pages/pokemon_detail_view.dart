@@ -134,9 +134,9 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                               SizedBox(height: MarginSizes.m),
                                               Row(
                                                   children: [
-                                                    TypeTextBox(PokemonTypesX.parse(pokemon!.types![0]) ),
+                                                    TypeTextBox(pokemon!.types![0] ),
                                                     SizedBox(width: MarginSizes.xs,),
-                                                    pokemon!.types!.length > 1 ?TypeTextBox(PokemonTypesX.parse(pokemon!.types![1]) ) : Container()
+                                                    pokemon!.types!.length > 1 ?TypeTextBox(pokemon!.types![1]) : Container()
                                                   ]
                                               ),
                                               SizedBox(height: MarginSizes.m),
@@ -330,14 +330,14 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
     List<PokemonTypes> resistantTypes = [];
     List<PokemonTypes> ineffectiveTypes = [];
 
-    for (String typeString in pokemon!.types!) {
-      pokemonTypes.add(PokemonTypesX.parse(typeString));
+    for (PokemonTypes pokemonType in pokemon!.types!) {
+      pokemonTypes.add(pokemonType);
     }
 
     PokemonTypes.values.forEach((element) {
       double effectiveness = 1;
       for (PokemonTypes pokemonType in pokemonTypes){
-        effectiveness = effectiveness * (element.effectiveness?[pokemonType] ?? 1.0);
+        effectiveness = effectiveness * (pokemonType.effectiveness?[element] ?? 1.0);
       }
       pokemonEffectiveness[element] = effectiveness;
       if(effectiveness == 4)
@@ -438,62 +438,6 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
           ),
           SizedBox(height: MarginSizes.l,),
           Text("레벨업으로 배우는 기술", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
-          SizedBox(height: MarginSizes.s,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(
-                fit: FlexFit.tight,flex: 6,
-                child: Container(
-                  width: double.infinity,
-                  child: Row(
-
-                    children: [
-                      SizedBox(width: 60,),
-                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
-                      TypeTextBox(PokemonTypes.electric),
-                      SizedBox(width: MarginSizes.m,),
-                    ],
-                  ),
-                  height: 50,alignment: Alignment.center,
-                  decoration: BoxDecorations.lightCard,
-                ),
-              )
-            ],
-          ),
-          SizedBox(height: MarginSizes.m,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(
-                fit: FlexFit.tight,flex: 6,
-                child: Container(
-                  width: double.infinity,
-                  child: Row(
-
-                    children: [
-                      SizedBox(width: MarginSizes.s,),
-                      TypeTextBox(PokemonTypes.electric),
-                      SizedBox(width: 60,),
-                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
-
-                      SizedBox(width: MarginSizes.m,),
-                    ],
-                  ),
-                  height: 50,alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    //color: AppColors.backgroundColorLightGrey,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          color: Colors.grey
-                      )
-                  ),
-                ),
-              )
-            ],
-          ),
           SizedBox(height: MarginSizes.m,),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -502,6 +446,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
               Flexible(
                 fit: FlexFit.tight,flex: 6,
                 child: Stack(
+
                   children: [
 
                     Container(
@@ -520,88 +465,6 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                   ],
                 ),
               )
-            ],
-          ),
-          SizedBox(height: MarginSizes.m,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(
-                fit: FlexFit.tight,flex: 6,
-                child: Container(
-                  width: double.infinity,
-                  child: Row(
-
-                    children: [
-                      SizedBox(width: 60,),
-                      Expanded(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h4))),
-                      SizedBox(width: MarginSizes.m,),
-                      Container(
-                        decoration: BoxDecoration(color: TypeColors.lightYellow, borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))),
-
-                        height: 50, width: 70, alignment: Alignment.center, child: Text("Electric", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.paragraph),),),
-                    ],
-                  ),
-                  height: 50,alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    //color: AppColors.backgroundColorLightGrey,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                          color: Colors.grey
-                      )
-                  ),
-                ),
-              ),
-
-
-            ],
-          ),
-          SizedBox(height: MarginSizes.m,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(
-                fit: FlexFit.tight,flex: 6,
-                child: Container(
-                  width: double.infinity,
-                  child: Center(child: Text("10만볼트", style: getBoldKrFont(TypeColors.lightYellow, FontSizes.h4))),
-                  height: 50,alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    //color: AppColors.backgroundColorLightGrey,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                          color: TypeColors.lightYellow
-                      )
-                  ),
-                ),
-              ),
-
-
-            ],
-          ),
-          SizedBox(height: MarginSizes.m,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(child: Text("Lv. 4", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),  fit: FlexFit.tight,flex: 2, ),
-              Flexible(
-                fit: FlexFit.tight,flex: 6,
-                child: Container(
-                  width: double.infinity,
-                  child: Center(child: Text("10만볼트", style: getBoldKrFont(AppColors.fontColorWhite, FontSizes.h4))),
-
-                  height: 50,alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: TypeColors.lightYellow,
-                    borderRadius: BorderRadius.circular(12),
-
-                  ),
-                ),
-              ),
-
-
             ],
           ),
 
