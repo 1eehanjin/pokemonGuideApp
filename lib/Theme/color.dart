@@ -35,14 +35,15 @@ class AppColors{
 
   static const Color brandColor = Color(0xFF1036F0);
 
-  static const Color backgroundColorLight = Color(0xFFF8FAFB); //greyScale 0
+  static Color appbarColorLight = Color(0xFFD8DEE8);
+  static Color backgroundColorLight = Color(0xFFF8FAFB); //greyScale 0
   static const Color backgroundColorWhite = Color(0xFFFFFFFF); //white Color
   static const Color backgroundColorBlack = Color(0xFF363A3C); //greyScale 8
-  static const Color backgroundColorGrey = Color(0xFFE1E4E6); //greyScale 5
-  static const Color backgroundColorLightGrey = Color(0xFFEAEEEF); //greyScale 2
+  static Color backgroundColorGrey = Color(0xFFE1E4E6); //greyScale 5
+  static Color backgroundColorLightGrey = Color(0xFFEAEEEF); //greyScale 2
 
   static const Color shadowColorWhiteBackground = Color(0x180F2447);
-
+  static Color shadowAppbarColor = Color(0x330F2447);
 }
 
 

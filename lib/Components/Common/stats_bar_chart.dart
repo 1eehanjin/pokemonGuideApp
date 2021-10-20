@@ -130,7 +130,7 @@ class Stat extends StatelessWidget {
 class ProgressBar extends StatelessWidget {
   ProgressBar({
     this.color = AppColors.brandColor,
-    this.backgroundColor = AppColors.backgroundColorLightGrey,
+    this.backgroundColor = AppColors.backgroundColorWhite,
     required this.progress,
     required this.enableAnimation
   });
@@ -155,7 +155,7 @@ class ProgressBar extends StatelessWidget {
       alignment: Alignment.centerLeft,
       decoration: ShapeDecoration(
         shape: StadiumBorder(),
-        color: AppColors.backgroundColorLightGrey,
+        color: AppColors.backgroundColorWhite,
       ),
       child: enableAnimation
           ? AnimatedAlign(

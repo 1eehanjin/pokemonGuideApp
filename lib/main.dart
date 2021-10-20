@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pokemon_guides_app/Components/Common/titles.dart';
 import 'package:pokemon_guides_app/Components/MyHomePage/guide_buttons_grid.dart';
 import 'package:pokemon_guides_app/Datas/data.dart';
+import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
 
 import 'Components/MyHomePage/global_search_bar.dart';
@@ -32,6 +33,7 @@ class MyHomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
 

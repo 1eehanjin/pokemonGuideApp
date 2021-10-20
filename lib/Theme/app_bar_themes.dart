@@ -7,9 +7,10 @@ class AppBarThemes {
 
   static AppBarTheme appBarThemeLight = AppBarTheme(
     centerTitle: false,
-    backgroundColor: AppColors.backgroundColorLight,
-    foregroundColor: AppColors.fontColorBlack,
-    elevation: 0,
+    backgroundColor: AppColors.appbarColorLight,
+    elevation: 10,
+
+    shadowColor: AppColors.shadowAppbarColor,
     iconTheme: IconThemeData(color: AppColors.fontColorBlack),
     textTheme: TextTheme(
       headline6: getBoldKrFont(AppColors.fontColorBlack, 20),

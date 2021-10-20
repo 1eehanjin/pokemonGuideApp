@@ -5,5 +5,5 @@ class AppEdgeInsets{
 
   static const EdgeInsets sideEdgeInsets = EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side);
 
-  static const EdgeInsets listEdgeInsets = EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side, top: MarginSizes.m, bottom: MarginSizes.block);
+  static const EdgeInsets listEdgeInsets = EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side, top: MarginSizes.block, bottom: MarginSizes.block);
 }

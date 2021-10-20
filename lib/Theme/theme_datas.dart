@@ -4,9 +4,9 @@ import 'app_bar_themes.dart';
 import 'color.dart';
 
 class ThemeDatas {
-  static final ThemeData lightThemeData = ThemeData(
+  static ThemeData lightThemeData = ThemeData(
       appBarTheme: AppBarThemes.appBarThemeLight,
-      backgroundColor: AppColors.backgroundColorLight,
+      scaffoldBackgroundColor: AppColors.backgroundColorLight,
       primaryColor: AppColors.brandColor
   );
 

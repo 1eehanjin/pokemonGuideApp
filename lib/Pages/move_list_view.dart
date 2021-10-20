@@ -23,7 +23,34 @@ class MoveListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
         title: Text("Moves"),
+        bottom: PreferredSize(
+
+          preferredSize: Size.fromHeight(70),
+          child: Container(
+
+              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.filter_alt, color: AppColors.fontColorBlack,),
+                  SizedBox(width: MarginSizes.xs,),
+                  Text("Search", style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.h4),),
+                ],
+              ),
+              height: 50,margin: EdgeInsets.only(left: MarginSizes.side, right: MarginSizes.side, bottom: MarginSizes.s),
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    Shadows.whiteBackgroundShadow
+                  ]
+                  ,
+                  borderRadius: BorderRadius.circular(15),
+                  color: AppColors.backgroundColorWhite
+              )
+          ),
+
+        ),
       ),
       body: Column(
         children: [
