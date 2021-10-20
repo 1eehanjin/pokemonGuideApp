@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'move_model.dart';
 import 'pokemon_model.dart';
 import 'item_model.dart';
 
@@ -29,4 +30,12 @@ class DataSource {
   }
 
 
+  Future<List<MoveModel>> getMoves() async {
+    final String jsonString = await rootBundle.loadString('assets/datas/moves.json');
+    final jsonResponse = json.decode(jsonString);
+    final moveData = (jsonResponse as List)
+        .map((item) => MoveModel.fromJson(item))
+        .toList();
+    return moveData;
+  }
 }

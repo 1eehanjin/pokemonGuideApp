@@ -104,11 +104,11 @@ class _ItemInfoState extends State<ItemInfo> {
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: MarginSizes.m),
-                            Text("Category", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                            Text("Category", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.paragraph),),
                             SizedBox(height: MarginSizes.xs),
                             Text(widget.item!.category, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                             SizedBox(height: MarginSizes.block),
-                            Text("Effect", style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
+                            Text("Effect", style: getBoldKrFont(AppColors.fontColorGrey, FontSizes.paragraph),),
                             SizedBox(height: MarginSizes.xs),
                             Text(widget.item!.effect, style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph),),
                             SizedBox(height: MarginSizes.block),
@@ -127,12 +127,6 @@ class _ItemInfoState extends State<ItemInfo> {
   }
 
 
-  Widget itemInfoTitle(String title){
-    return Container(
-      child: Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2),),
-      width: double.infinity,height: 60,alignment: Alignment.centerLeft,
-    );
-  }
 }
 
 

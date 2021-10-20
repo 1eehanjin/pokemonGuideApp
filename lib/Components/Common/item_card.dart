@@ -39,7 +39,7 @@ class ItemCard extends StatelessWidget {
         child: Hero(
             tag: item.name,
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(MarginSizes.s),
               child: CachedNetworkImage(imageUrl: item.imageUrl, fit:BoxFit.contain),
             )
         )

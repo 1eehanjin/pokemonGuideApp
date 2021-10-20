@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_guides_app/JsonDecoders/pokemon_model.dart';
 import 'package:pokemon_guides_app/Theme/color.dart';
 import 'package:pokemon_guides_app/Theme/sizes.dart';
+import 'package:pokemon_guides_app/Theme/text_styles.dart';
 class PokemonBaseStats extends StatefulWidget {
   final PokemonModel? pokemon;
 
@@ -45,17 +46,6 @@ class _PokemonBaseStatsState extends State<PokemonBaseStats> with SingleTickerPr
 
   List<Widget> generateStatWidget() {
     return [
-      Container(
-        height: 6,
-        child: Expanded(
-          flex: 5,
-          child:  ProgressBar(
-            progress: 60,
-            color:  Colors.lightBlue,
-            enableAnimation: true,
-          ),
-        ),
-      ),
       Stat(animation: _animation, label: 'Hp', value: pokemon!.hp, progress: 0,),
       SizedBox(height: MarginSizes.s),
       Stat(animation: _animation, label: 'Atttack', value: pokemon!.attack, progress: 10,),
@@ -69,6 +59,7 @@ class _PokemonBaseStatsState extends State<PokemonBaseStats> with SingleTickerPr
       Stat(animation: _animation, label: 'Speed', value: pokemon!.speed, progress: 50,),
       SizedBox(height: MarginSizes.s),
       Stat(animation: _animation, label: 'Total', value: pokemon!.total, progress: 50,),
+      SizedBox(height: MarginSizes.m),
     ];
   }
 
@@ -76,7 +67,6 @@ class _PokemonBaseStatsState extends State<PokemonBaseStats> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.max,
@@ -114,12 +104,12 @@ class Stat extends StatelessWidget {
           flex: 2,
           child: Text(
             label,
-            style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.paragraph)
           ),
         ),
         Expanded(
           flex: 1,
-          child: Text('$value'),
+          child: Text('$value', style: getRegularKrFont(AppColors.fontColorBlack, FontSizes.paragraph)),
         ),
         Expanded(
           flex: 5,

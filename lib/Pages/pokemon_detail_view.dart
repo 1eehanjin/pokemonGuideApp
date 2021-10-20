@@ -248,17 +248,17 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
                                 )
                             ),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("능력치"), contentsWidget: statusContents(),),
+                            PokemonInfoCard(title:  "능력치", contentsWidget: statusContents(),),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("방어 상성"), contentsWidget: typeContents(),),
+                            PokemonInfoCard(title: "방어 상성", contentsWidget: typeContents(),),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("기술"), contentsWidget: moveContents(),),
+                            PokemonInfoCard(title: "기술", contentsWidget: moveContents(),),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("진화 및 모습"), contentsWidget: formContents(),),
+                            PokemonInfoCard(title: "진화 및 모습", contentsWidget: formContents(),),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("도감별 설명"), contentsWidget: regionalContents(),),
+                            PokemonInfoCard(title: "도감별 설명", contentsWidget: regionalContents(),),
                             SizedBox(height: MarginSizes.m,),
-                            PokemonInfoCard(titleWidget:  pokemonInfoTitle("출현 장소"), contentsWidget: locationContents(),),
+                            PokemonInfoCard(title: "출현 장소", contentsWidget: locationContents(),),
                             SizedBox(height: MarginSizes.block,),
                           ],
                         ),
@@ -276,42 +276,14 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
 
   Widget statusContents(){
 
-    const numberOfFeatures = 6;
-    const ticks = [20, 40, 60, 80, 100, 120];
-    var features = ["HP", "공격", "방어","스피드", "특수방어", "특수공격",];
-    var data = [
-      [120,120,120,120,120,120],
-      [pokemon!.hp.floor(),pokemon!.attack.floor(),pokemon!.defense.floor(),pokemon!.speed.floor(),pokemon!.specialDefense.floor(),pokemon!.specialAttack.floor()]
-    ];
-
-    features = features.sublist(0, numberOfFeatures.floor());
-    data = data
-        .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
-        .toList();
-
 
     return Container(
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 12, right: 12, bottom: MarginSizes.block),
-            child: AspectRatio(
-                aspectRatio: 1,
-                child: RadarChart(outlineColor: Colors.white,
-                  axisColor: Colors.white,
-                  graphColors: [Color(0XFFDDDDDD), Color(0x66BA55D3)],
-                  data: data,
-                  ticks: ticks,
-                  features: features,
-                  sides: 6,
-                  reverseAxis: false,
-                  featuresTextStyle: getRegularKrFont(AppColors.fontColorBlack, FontSizes.h4),
-                )
-            ),
-          )
-
+          SizedBox(height: MarginSizes.m,),
+          PokemonBaseStats(pokemon)
         ],
 
 
@@ -706,19 +678,13 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
     );
   }
 
-  Widget pokemonInfoTitle(String title){
-    return Container(
-      child: Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2),),
-      width: double.infinity,height: 60,alignment: Alignment.centerLeft,
-    );
-  }
+
 }
 
 
 class PokemonInfoCard extends StatefulWidget {
-  PokemonInfoCard({required this.titleWidget, required this.contentsWidget});
-
-  final titleWidget;
+  PokemonInfoCard({required this.title, required this.contentsWidget});
+  final String title;
   final contentsWidget;
 
   @override
@@ -739,15 +705,40 @@ class _PokemonInfoCardState extends State<PokemonInfoCard> {
       child: Container(
         decoration: BoxDecorations.lightCard,
         padding: AppEdgeInsets.sideEdgeInsets,
-        child: AnimatedCrossFade(firstChild: widget.titleWidget,
+        child: AnimatedCrossFade(firstChild: closedPokemonInfoTitle(widget.title),
             secondChild: Column(
               children: [
-                widget.titleWidget,
+                openedPokemonInfoTitle(widget.title),
                 widget.contentsWidget,
               ],
             ),
             crossFadeState: isOpened == false ? CrossFadeState.showFirst : CrossFadeState.showSecond, duration: Duration(milliseconds: 500)),
       ),
+    );
+  }
+
+  Widget closedPokemonInfoTitle(String title){
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2),),
+          Container(child:Icon(Icons.expand_more, color: AppColors.fontColorBlack,))
+        ],
+      ),
+      width: double.infinity,height: 60,alignment: Alignment.centerLeft,
+    );
+  }
+
+  Widget openedPokemonInfoTitle(String title){
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: getBoldKrFont(AppColors.fontColorBlack, FontSizes.h2),),
+        ],
+      ),
+      width: double.infinity,height: 60,alignment: Alignment.centerLeft,
     );
   }
 }
