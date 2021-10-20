@@ -23,6 +23,7 @@ class MoveListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.appbarColorLight,
         shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))),

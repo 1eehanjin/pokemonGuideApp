@@ -7,7 +7,7 @@ class AppBarThemes {
 
   static AppBarTheme appBarThemeLight = AppBarTheme(
     centerTitle: false,
-    backgroundColor: AppColors.appbarColorLight,
+    backgroundColor: AppColors.backgroundColorLight,
     elevation: 10,
 
     shadowColor: AppColors.shadowAppbarColor,

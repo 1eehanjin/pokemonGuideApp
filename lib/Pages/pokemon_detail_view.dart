@@ -51,6 +51,7 @@ class _PokemonDetailViewState extends State<PokemonDetailView> {
       body: CustomScrollView(
           slivers: [
             SliverAppBar(
+
               elevation: 5,
               pinned: true,
               snap: false,

@@ -20,6 +20,7 @@ class PokemonListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.appbarColorLight,
         shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))),

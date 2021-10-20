@@ -66,6 +66,7 @@ class _ItemInfoState extends State<ItemInfo> {
 
         slivers: <Widget>[
           SliverAppBar(
+            
             elevation: 5,
             pinned: true,
             snap: false,

@@ -62,6 +62,7 @@ class _MoveInfoState extends State<MoveInfo> {
 
         slivers: <Widget>[
           SliverAppBar(
+
             elevation: 5,
             pinned: true,
             snap: false,
