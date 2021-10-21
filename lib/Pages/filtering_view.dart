@@ -13,9 +13,40 @@ class FilteringView extends StatefulWidget {
   _FilteringViewState createState() => _FilteringViewState();
 }
 
+class Controller extends GetxController{
+  bool holdItems = true;
+  bool pokeballs = true;
+  bool battleItems = true;
+  bool berries = true;
+  bool medicines = true;
+  bool generalItems = true;
+
+  void checkHoldItems(){
+    holdItems = !holdItems;
+  }
+  void checkPokeballs(){
+    pokeballs = !pokeballs;
+  }
+  void checkBattleItems(){
+    battleItems = !battleItems;
+    update();
+  }
+  void checkBerries(){
+    berries = !berries;
+  }
+  void checkMedicines(){
+    medicines = !medicines;
+  }
+  void checkGeneralItems(){
+    generalItems = !generalItems;
+  }
+}
+
 class _FilteringViewState extends State<FilteringView> {
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(elevation: 0,),
       body: Column(
@@ -25,6 +56,7 @@ class _FilteringViewState extends State<FilteringView> {
               children: [
                 SizedBox(height: MarginSizes.block,),
                 Titles.h2("카테고리"),
+
                 Padding(
                   padding: AppEdgeInsets.sideEdgeInsets,
                   child: Column(
@@ -32,25 +64,32 @@ class _FilteringViewState extends State<FilteringView> {
                       SizedBox(height: MarginSizes.s,),
                       Row(
                         children: [
-                          filterButton("111", AppImages.itemsButton),
-                          SizedBox(width: MarginSizes.s,),
-                          filterButton("111", AppImages.itemsButton)
+                          filterButton("All", AppImages.itemsButton),
+
                         ],
                       ),
                       SizedBox(height: MarginSizes.s,),
                       Row(
                         children: [
-                          filterButton("111", AppImages.itemsButton),
+                          filterButton("Hold Items", AppImages.itemsButton),
                           SizedBox(width: MarginSizes.s,),
-                          filterButton("111", AppImages.itemsButton)
+                          filterButton("Pokeballs", AppImages.itemsButton)
                         ],
                       ),
                       SizedBox(height: MarginSizes.s,),
                       Row(
                         children: [
-                          filterButton("111", AppImages.itemsButton),
+                          filterButton("Battle Items", AppImages.itemsButton),
                           SizedBox(width: MarginSizes.s,),
-                          filterButton("111", AppImages.itemsButton)
+                          filterButton("Berries", AppImages.itemsButton)
+                        ],
+                      ),
+                      SizedBox(height: MarginSizes.s,),
+                      Row(
+                        children: [
+                          filterButton("Medicines", AppImages.itemsButton),
+                          SizedBox(width: MarginSizes.s,),
+                          filterButton("General Items", AppImages.itemsButton)
                         ],
                       )
                     ],
@@ -73,24 +112,33 @@ class _FilteringViewState extends State<FilteringView> {
   }
 
   Widget filterButton(String title, Widget image){
-    return GestureDetector(
-      child: Container(
-        height: 60,width: (Get.width - MarginSizes.side * 2 - MarginSizes.s) / 2,
-        decoration: BoxDecorations.outlineButton,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(width: MarginSizes.m,),
-            Container(
-              width: 30, height: 30,
-                child: image
+    return GetBuilder<Controller>(
+      builder: (_) {
+        return GestureDetector(
+          onTap: (){
+            Get.find<Controller>().checkBattleItems();
+          },
+          child: Container(
+            height: 60,width: (Get.width - MarginSizes.side * 2 - MarginSizes.s) / 2,
+            decoration: _.battleItems ? BoxDecorations.ghostButton : BoxDecorations.outlineButton,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(width: MarginSizes.m,),
+                Container(
+                    width: 30, height: 30,
+                    child: image
+                ),
+                SizedBox(width: MarginSizes.m,),
+                Text(title)
+              ],
             ),
-            SizedBox(width: MarginSizes.m,),
-            Text(title)
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
+
+
   }
 }
 

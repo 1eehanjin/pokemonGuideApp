@@ -23,7 +23,7 @@ import 'item_detail_view.dart';
 class ItemListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+    final controller = Get.put(Controller());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.appbarColorLight,
