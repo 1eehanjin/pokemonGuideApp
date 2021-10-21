@@ -33,7 +33,7 @@ class AppColors{
 
   static const Color errorColor = Color(0xFFFF3120);
 
-  static const Color brandColor = Color(0xFF1036F0);
+  static const Color brandColor = Color(0xFF4c80f1);
 
   static Color appbarColorLight = Color(0xFFD8DEE8);
   static Color backgroundColorLight = Color(0xFFF8FAFB); //greyScale 0
